@@ -9,3 +9,5 @@ select = ["E", "F", "I", "UP"]
 [tool.ruff.lint.per-file-ignores]
 # Exercise files carry long explanatory comments for the learner.
 "**/exercises.py" = ["F401", "E501"]
+# Project starters import what the learner will need once the TODOs are filled in.
+"python/week-*-project/*.py" = ["F401"]
