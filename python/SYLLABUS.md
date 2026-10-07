@@ -30,7 +30,7 @@ Weeks 1–4 of the [12-week plan](../docs/12-week-plan.md) (module 12 lands in w
 | 1 | [Contacts and word counter](week-1-project/README.md) |
 | 2 | [Gameya calculator CLI](week-2-project/README.md): payout, due amounts, pay-window logic as pure functions, with `argparse` and custom exceptions |
 | 3 | [Gameya domain model](week-3-project/README.md): dataclasses, a collection-like class, a generator and an audit decorator |
-| 4 | Task Tracker CLI (capstone) |
+| 4 | [Task Tracker CLI (capstone)](15-capstone-task-tracker/README.md): data model, JSON storage, `argparse` CLI, tests, types and packaging; acceptance tests included |
 
 ## Exit exam: "I know Python"
 Pass all of these without notes:

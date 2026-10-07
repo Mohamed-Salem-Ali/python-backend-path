@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tasktracker"
+version = "0.1.0"
+description = "A small command-line task tracker"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+license = {text = "MIT"}
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "mypy", "ruff"]
+
+[project.scripts]
+tasks = "tasktracker.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

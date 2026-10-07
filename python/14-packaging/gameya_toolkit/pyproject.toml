@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# TODO: fill in the project metadata. The checker in ../exercises.py tells you what is missing.
+#   name            = "gameya-toolkit"
+#   version         = "0.1.0"
+#   description     = a one-line summary
+#   readme          = "README.md"
+#   requires-python = ">=3.12"
+#   dependencies    = []
+#   license         = {text = "MIT"}
+
+# TODO: add a console command. The section header is [project.scripts] and the entry is
+#   gameya-toolkit = "gameya_toolkit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

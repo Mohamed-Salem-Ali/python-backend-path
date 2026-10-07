@@ -34,7 +34,7 @@ Full day-by-day detail is in [docs/12-week-plan.md](docs/12-week-plan.md).
 
 | Weeks | Phase | Status |
 |---|---|---|
-| 1–4 | [Python fundamentals](python/SYLLABUS.md) | Weeks 1–3 ready |
+| 1–4 | [Python fundamentals](python/SYLLABUS.md) | Python phase ready (weeks 1–4) |
 | 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | Planned |
 | 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned |
 
@@ -51,11 +51,11 @@ Full day-by-day detail is in [docs/12-week-plan.md](docs/12-week-plan.md).
 | 08 | [Error handling](python/08-error-handling/lesson.md) | 2 | Ready |
 | 09 | [Iterators and generators](python/09-iterators-generators/lesson.md) | 3 | Ready |
 | 10 | [Decorators](python/10-decorators/lesson.md) | 3 | Ready |
-| 11 | Typing | 4 | Planned |
+| 11 | [Typing](python/11-typing/lesson.md) | 4 | Ready |
 | 12 | Concurrency and async | 10 | Planned |
-| 13 | Testing | 4 | Planned |
-| 14 | Packaging | 4 | Planned |
-| 15 | Capstone: Task Tracker CLI | 4 | Planned |
+| 13 | [Testing](python/13-testing/lesson.md) | 4 | Ready |
+| 14 | [Packaging](python/14-packaging/lesson.md) | 4 | Ready |
+| 15 | [Capstone: Task Tracker CLI](python/15-capstone-task-tracker/README.md) | 4 | Ready |
 
 ### Revision companions
 Optional interactive summaries made with Google NotebookLM. Use them for a recap after you finish a lesson; the lessons stay the source of truth, and the links are hosted by Google.
