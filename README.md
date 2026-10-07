@@ -34,7 +34,7 @@ Full day-by-day detail is in [docs/12-week-plan.md](docs/12-week-plan.md).
 
 | Weeks | Phase | Status |
 |---|---|---|
-| 1–4 | [Python fundamentals](python/SYLLABUS.md) | Weeks 1–2 ready |
+| 1–4 | [Python fundamentals](python/SYLLABUS.md) | Weeks 1–3 ready |
 | 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | Planned |
 | 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned |
 
@@ -47,10 +47,10 @@ Full day-by-day detail is in [docs/12-week-plan.md](docs/12-week-plan.md).
 | 04 | [Control flow](python/04-control-flow/lesson.md) | 1 | Ready |
 | 05 | [Functions](python/05-functions/lesson.md) | 2 | Ready |
 | 06 | [Modules, packages and the standard library](python/06-modules-packages-stdlib/lesson.md) | 2 | Ready |
-| 07 | OOP | 3 | Planned |
+| 07 | [OOP](python/07-oop/lesson.md) | 3 | Ready |
 | 08 | [Error handling](python/08-error-handling/lesson.md) | 2 | Ready |
-| 09 | Iterators and generators | 3 | Planned |
-| 10 | Decorators | 3 | Planned |
+| 09 | [Iterators and generators](python/09-iterators-generators/lesson.md) | 3 | Ready |
+| 10 | [Decorators](python/10-decorators/lesson.md) | 3 | Ready |
 | 11 | Typing | 4 | Planned |
 | 12 | Concurrency and async | 10 | Planned |
 | 13 | Testing | 4 | Planned |
