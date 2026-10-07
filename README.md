@@ -35,7 +35,7 @@ Full day-by-day detail is in [docs/12-week-plan.md](docs/12-week-plan.md).
 | Weeks | Phase | Status |
 |---|---|---|
 | 1–4 | [Python fundamentals](python/SYLLABUS.md) | Python phase ready (weeks 1–4) |
-| 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | Planned |
+| 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | Week 5 ready |
 | 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned |
 
 ### Python modules

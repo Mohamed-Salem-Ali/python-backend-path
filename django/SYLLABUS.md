@@ -10,8 +10,8 @@ Weeks 5–9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [P
 
 | Week | Module | You can… |
 |---|---|---|
-| 5 | Architecture | explain MTV, project vs app, settings, URL routing, the request/response cycle |
-| 5 | Models and ORM | define models and relations, write migrations, use QuerySets, managers and aggregation |
+| 5 | [Architecture](01-architecture/lesson.md) | explain MTV, project vs app, settings, URL routing, the request/response cycle |
+| 5 | [Models and ORM](02-models-orm/lesson.md) | define models and relations, write migrations, use QuerySets, managers and aggregation |
 | 6 | Admin and forms | configure the admin, write forms and validation |
 | 6 | Views and templates | choose between function and class-based views; render templates with inheritance |
 | 7 | Middleware and signals | write middleware; use signals (and know when not to) |
