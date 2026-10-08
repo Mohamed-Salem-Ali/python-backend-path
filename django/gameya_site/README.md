@@ -12,8 +12,8 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [circles/](circles/) | The app that holds the Gameya domain | Scaffold |
 | [circles/models.py](circles/models.py) | Four models: `Gameya`, `Member`, `Payment`, `PayoutSlot` | Stub (module 02) |
 | [circles/queries.py](circles/queries.py) | Reusable query functions | Stub (module 02) |
-| [circles/views.py](circles/views.py) | Health, hello, add and about views | TODO comments only (module 01) |
-| [circles/urls.py](circles/urls.py) | App URL routes | TODO comments only (module 01) |
+| [circles/views.py](circles/views.py) | Function views (health, hello, add, about) and class-based views (list, detail, payments) | TODO comments only (modules 01 and 04) |
+| [circles/urls.py](circles/urls.py) | App URL routes | TODO comments only (modules 01 and 04) |
 | `circles/templates/circles/about.html` | About page template. You create this file | Module 01 |
 | [circles/admin.py](circles/admin.py) | Admin registrations | TODO comments only (module 03) |
 | [circles/forms.py](circles/forms.py) | `PaymentForm` and `JoinForm` | TODO comments only (module 03) |
@@ -28,6 +28,7 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [test_models.py](circles/tests/test_models.py) | The four models, their relations and constraints | 02 |
 | [test_queries.py](circles/tests/test_queries.py) | The functions in `queries.py`, including query counts | 02 |
 | [test_admin_forms.py](circles/tests/test_admin_forms.py) | The admin registrations, admin pages, and the forms | 03 |
+| [test_class_views.py](circles/tests/test_class_views.py) | The class-based views: list, detail and payments API | 04 |
 
 Run them from this folder, after the [week 5 setup](../WEEK-5.md#setup-day-1-15-minutes):
 

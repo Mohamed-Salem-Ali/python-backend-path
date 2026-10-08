@@ -1,6 +1,6 @@
 # Django syllabus
 
-Weeks 5–9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [Python exit exam](../python/SYLLABUS.md#exit-exam-i-know-python).
+Weeks 5â€“9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [Python exit exam](../python/SYLLABUS.md#exit-exam-i-know-python).
 
 **Level target:** build, test, secure and deploy a Django application with a REST API, and explain how a request moves through the framework.
 
@@ -8,12 +8,12 @@ Weeks 5–9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [P
 
 ## Core track
 
-| # | Module | Week | You can… |
+| # | Module | Week | You canâ€¦ |
 |---|---|---|---|
 | 01 | [Architecture](01-architecture/lesson.md) | 5 | explain MTV, project vs app, settings, URL routing, the request/response cycle |
 | 02 | [Models and ORM](02-models-orm/lesson.md) | 5 | define models and relations, write migrations, use QuerySets, managers and aggregation |
 | 03 | [Admin and forms](03-admin-forms/lesson.md) | 6 | configure the admin, write forms and validation |
-| 04 | Views | 6 | choose between function and class-based views |
+| 04 | [Views](04-views/lesson.md) | 6 | choose between function and class-based views |
 | 05 | Templates | 6 | render templates with inheritance |
 | 06 | Django REST Framework | 8 | serializers, viewsets and routers, permissions, auth, pagination, filtering |
 | 07 | Middleware and signals | 7 | write middleware; use signals (and know when not to) |

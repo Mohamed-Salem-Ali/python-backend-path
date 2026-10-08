@@ -1,4 +1,4 @@
-# Django (weeks 5–9)
+# Django (weeks 5â€“9)
 
 Starts after the Python phase. The project is **Gameya**, a rotating-savings tracker, built step by step: models and ORM, admin, views and templates, tests, DRF, Celery, deployment.
 
@@ -11,7 +11,7 @@ Start with [WEEK-5.md](WEEK-5.md). The code lives in [`gameya_site/`](gameya_sit
 | 01 | [01-architecture](01-architecture/) | MTV, project vs app, request cycle | 5 | Ready | [lesson](01-architecture/lesson.md), [checks](gameya_site/circles/tests/test_architecture.py) |
 | 02 | [02-models-orm](02-models-orm/) | Models, migrations, QuerySets | 5 | Ready | [lesson](02-models-orm/lesson.md), [model checks](gameya_site/circles/tests/test_models.py), [query checks](gameya_site/circles/tests/test_queries.py) |
 | 03 | [03-admin-forms](03-admin-forms/) | Admin and forms | 6 | Ready | [lesson](03-admin-forms/lesson.md), [checks](gameya_site/circles/tests/test_admin_forms.py) |
-| 04 | `04-views` | Function and class-based views | 6 | Planned | None yet |
+| 04 | [04-views](04-views/) | Function and class-based views | 6 | Ready | [lesson](04-views/lesson.md), [checks](gameya_site/circles/tests/test_class_views.py) |
 | 05 | `05-templates` | Templates and inheritance | 6 | Planned | None yet |
 | 06 | `06-drf` | Django REST Framework | 8 | Planned | None yet |
 | 07 | `07-middleware-signals` | Middleware and signals | 7 | Planned | None yet |
