@@ -64,6 +64,8 @@ class Payment(models.Model):
     Meta: order by week then id. A UniqueConstraint "one_payment_per_member_week" on (member, week).
     __str__: "Ali: week 1".
     clean(): raise ValidationError unless 1 <= week <= the gameya's weeks.
+             clean() also runs when a form field has already failed, so it must not crash
+             when member or week is not set yet.
     Property is_advance: True when paid_on is before the gameya's pay_window_start(week).
     """
 

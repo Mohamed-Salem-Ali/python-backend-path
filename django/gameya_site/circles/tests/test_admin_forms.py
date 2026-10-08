@@ -12,13 +12,14 @@ from django.contrib.auth import get_user_model
 from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
-from circles.forms import JoinForm, PaymentForm
+# Import the module, not the names: a missing form then fails only its own tests.
+from circles import forms as circle_forms
 from circles.models import Gameya, Member, Payment, PayoutSlot
 
 
 def model_admin(model):
     """The ModelAdmin object registered for a model."""
-    return admin.site._registry[model]
+    return admin.site.get_model_admin(model)
 
 
 class AdminRegistrationTests(SimpleTestCase):
@@ -28,8 +29,10 @@ class AdminRegistrationTests(SimpleTestCase):
                 self.assertTrue(admin.site.is_registered(model))
 
     def test_gameya_page_edits_its_members_inline(self):
-        inlines = [inline.model for inline in model_admin(Gameya).inlines]
-        self.assertIn(Member, inlines)
+        inlines = model_admin(Gameya).inlines
+        members_inline = [inline for inline in inlines if inline.model is Member]
+        self.assertEqual(len(members_inline), 1)
+        self.assertTrue(issubclass(members_inline[0], admin.TabularInline))
 
     def test_member_admin_shows_name_gameya_and_shares(self):
         shown = model_admin(Member).list_display
@@ -42,11 +45,14 @@ class AdminRegistrationTests(SimpleTestCase):
         self.assertIn("name", admin_obj.search_fields)
         self.assertIn("gameya", admin_obj.list_filter)
 
-    def test_payment_admin_shows_member_week_and_amount(self):
+    def test_payment_admin_shows_member_week_paid_on_and_amount(self):
         shown = model_admin(Payment).list_display
-        for field in ("member", "week", "amount"):
+        for field in ("member", "week", "paid_on", "amount"):
             with self.subTest(field=field):
                 self.assertIn(field, shown)
+
+    def test_payout_slot_admin_shows_the_turn_number(self):
+        self.assertIn("turn_number", model_admin(PayoutSlot).list_display)
 
 
 class AdminPagesTests(TestCase):
@@ -71,16 +77,12 @@ class AdminPagesTests(TestCase):
                 self.assertEqual(response.status_code, 200)
 
     def test_search_finds_members_by_name(self):
-        response = self.client.get(
-            reverse("admin:circles_member_changelist"), {"q": "Sar"}
-        )
+        response = self.client.get(reverse("admin:circles_member_changelist"), {"q": "Sar"})
         names = [member.name for member in response.context["cl"].result_list]
         self.assertEqual(names, ["Sara"])
 
     def test_the_gameya_page_lists_its_members(self):
-        response = self.client.get(
-            reverse("admin:circles_gameya_change", args=[self.gameya.pk])
-        )
+        response = self.client.get(reverse("admin:circles_gameya_change", args=[self.gameya.pk]))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Ali")
         self.assertContains(response, "Sara")
@@ -117,64 +119,71 @@ class PaymentFormTests(TestCase):
         return values
 
     def test_the_form_has_exactly_the_four_payment_fields(self):
-        self.assertEqual(set(PaymentForm().fields), {"member", "week", "paid_on", "amount"})
+        self.assertEqual(
+            set(circle_forms.PaymentForm().fields), {"member", "week", "paid_on", "amount"}
+        )
 
     def test_a_payment_of_exactly_the_weekly_due_is_valid(self):
-        form = PaymentForm(data=self.data())
+        form = circle_forms.PaymentForm(data=self.data())
         self.assertTrue(form.is_valid(), form.errors)
 
     def test_paying_more_than_the_due_is_valid(self):
-        form = PaymentForm(data=self.data(amount=1500))
+        form = circle_forms.PaymentForm(data=self.data(amount=1500))
         self.assertTrue(form.is_valid(), form.errors)
 
     def test_paying_less_than_the_due_is_rejected_on_amount(self):
-        form = PaymentForm(data=self.data(amount=999))
+        form = circle_forms.PaymentForm(data=self.data(amount=999))
         self.assertFalse(form.is_valid())
         self.assertIn("amount", form.errors)
 
     def test_a_week_outside_the_gameya_is_rejected(self):
-        form = PaymentForm(data=self.data(week=11))
+        form = circle_forms.PaymentForm(data=self.data(week=11))
         self.assertFalse(form.is_valid())
 
     def test_a_second_payment_for_the_same_week_is_rejected(self):
         Payment.objects.create(member=self.ali, week=1, paid_on=date(2026, 10, 11), amount=1000)
-        form = PaymentForm(data=self.data())
+        form = circle_forms.PaymentForm(data=self.data())
         self.assertFalse(form.is_valid())
         self.assertTrue(form.non_field_errors())
 
     def test_a_missing_member_is_reported_and_does_not_crash(self):
-        form = PaymentForm(data=self.data(member=""))
+        form = circle_forms.PaymentForm(data=self.data(member=""))
         self.assertFalse(form.is_valid())
         self.assertIn("member", form.errors)
 
 
 class JoinFormTests(SimpleTestCase):
     def test_a_valid_join_is_accepted(self):
-        form = JoinForm(data={"name": "Sara", "shares": 2})
+        form = circle_forms.JoinForm(data={"name": "Sara", "shares": 2})
         self.assertTrue(form.is_valid(), form.errors)
 
     def test_the_name_is_stripped_of_spaces(self):
-        form = JoinForm(data={"name": "  Sara  ", "shares": 1})
+        form = circle_forms.JoinForm(data={"name": "  Sara  ", "shares": 1})
         self.assertTrue(form.is_valid(), form.errors)
         self.assertEqual(form.cleaned_data["name"], "Sara")
 
     def test_a_blank_name_is_rejected(self):
-        form = JoinForm(data={"name": "   ", "shares": 1})
+        form = circle_forms.JoinForm(data={"name": "   ", "shares": 1})
+        self.assertFalse(form.is_valid())
+        self.assertIn("name", form.errors)
+
+    def test_the_name_admin_is_reserved_in_any_letter_case(self):
+        form = circle_forms.JoinForm(data={"name": "ADMIN", "shares": 1})
         self.assertFalse(form.is_valid())
         self.assertIn("name", form.errors)
 
     def test_a_name_over_80_characters_is_rejected(self):
-        form = JoinForm(data={"name": "x" * 81, "shares": 1})
+        form = circle_forms.JoinForm(data={"name": "x" * 81, "shares": 1})
         self.assertFalse(form.is_valid())
         self.assertIn("name", form.errors)
 
     def test_shares_must_be_between_1_and_5(self):
         for shares in (0, 6):
             with self.subTest(shares=shares):
-                form = JoinForm(data={"name": "Sara", "shares": shares})
+                form = circle_forms.JoinForm(data={"name": "Sara", "shares": shares})
                 self.assertFalse(form.is_valid())
                 self.assertIn("shares", form.errors)
         for shares in (1, 5):
             with self.subTest(shares=shares):
-                form = JoinForm(data={"name": "Sara", "shares": shares})
+                form = circle_forms.JoinForm(data={"name": "Sara", "shares": shares})
                 self.assertTrue(form.is_valid(), form.errors)
