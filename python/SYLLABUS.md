@@ -1,6 +1,6 @@
 # Python syllabus
 
-Weeks 1–4 of the [12-week plan](../docs/12-week-plan.md) (module 12 lands in week 10). Each module has a `lesson.md` and an `exercises.py` that checks itself.
+Weeks 1–4 of the [12-week plan](../docs/12-week-plan.md) (module 12 lands in week 10). Each module has a `lesson.md` and a way to check your work: an `exercises.py` that checks itself, or, in module 13, a test file you write and a checker that grades it.
 
 **Level target:** write, test, package and debug a small Python program on your own, and explain how the language works underneath.
 

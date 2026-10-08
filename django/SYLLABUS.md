@@ -8,19 +8,21 @@ Weeks 5–9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [P
 
 ## Core track
 
-| Week | Module | You can… |
-|---|---|---|
-| 5 | [Architecture](01-architecture/lesson.md) | explain MTV, project vs app, settings, URL routing, the request/response cycle |
-| 5 | [Models and ORM](02-models-orm/lesson.md) | define models and relations, write migrations, use QuerySets, managers and aggregation |
-| 6 | Admin and forms | configure the admin, write forms and validation |
-| 6 | Views and templates | choose between function and class-based views; render templates with inheritance |
-| 7 | Middleware and signals | write middleware; use signals (and know when not to) |
-| 7 | Testing | test with pytest-django, factories and the test client |
-| 7 | Caching and performance | find and fix N+1 queries (`select_related`, `prefetch_related`), use the cache framework |
-| 8 | Django REST Framework | serializers, viewsets and routers, permissions, auth, pagination, filtering |
-| 9 | Background tasks | run Celery tasks, schedule jobs |
-| 9 | Auth and security | sessions vs JWT, CSRF, XSS, ownership permissions, secure settings |
-| 9 | Deployment | gunicorn, static files, env-driven settings, deploy to a real host |
+| # | Module | Week | You can… |
+|---|---|---|---|
+| 01 | [Architecture](01-architecture/lesson.md) | 5 | explain MTV, project vs app, settings, URL routing, the request/response cycle |
+| 02 | [Models and ORM](02-models-orm/lesson.md) | 5 | define models and relations, write migrations, use QuerySets, managers and aggregation |
+| 03 | Admin and forms | 6 | configure the admin, write forms and validation |
+| 04 | Views | 6 | choose between function and class-based views |
+| 05 | Templates | 6 | render templates with inheritance |
+| 06 | Django REST Framework | 8 | serializers, viewsets and routers, permissions, auth, pagination, filtering |
+| 07 | Middleware and signals | 7 | write middleware; use signals (and know when not to) |
+| 08 | Testing | 7 | test with pytest-django, factories and the test client |
+| 09 | Caching and performance | 7 | find and fix N+1 queries (`select_related`, `prefetch_related`), use the cache framework |
+| 10 | Background tasks | 9 | run Celery tasks, schedule jobs |
+| 11 | Auth and security | 9 | sessions vs JWT, CSRF, XSS, ownership permissions, secure settings |
+| 12 | Deployment | 9 | gunicorn, static files, env-driven settings, deploy to a real host |
+| 13 | Capstone: Gameya portfolio project | 9 | ship Gameya to a real host, with a README and a short write-up for your portfolio |
 
 ## Exit exam: "I know Django"
 - [ ] Trace a request from the URL to the response, naming each layer it passes through

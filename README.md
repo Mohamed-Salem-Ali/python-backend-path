@@ -1,12 +1,12 @@
 # Python Backend Path
 
-A hands-on, ground-up path through **Python → Django → FastAPI** in 12 weeks, at 2–5 hours a day. Every module has a lesson, exercises that check themselves, and the weeks build toward two deployed projects.
+A hands-on, ground-up path through **Python → Django → FastAPI** in 12 weeks, at 2–5 hours a day. Each module has a lesson and a way to check your work, and the weeks build toward two deployed projects.
 
 It is written in the open by a working developer relearning the fundamentals properly. Follow along, fork it, or open an issue if something is unclear.
 
 ## How it works
 1. Read the **lesson** (`lesson.md`) and type every example yourself.
-2. Fill in the `TODO`s in **`exercises.py`** and run it. A passing file prints `All checks passed`.
+2. Fill in the `TODO`s in **`exercises.py`** and run it. A passing file prints `All checks passed`. Django and the capstone are checked by tests instead.
 3. Finish the week's **project**.
 4. Write down what you learned. Tick the checkpoint.
 
@@ -30,13 +30,13 @@ python python/01-environment-tooling/exercises.py
 ```
 
 ## Roadmap
-Full day-by-day detail is in [docs/12-week-plan.md](docs/12-week-plan.md).
+The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by-day detail is in each `WEEK-N.md` file.
 
 | Weeks | Phase | Status |
 |---|---|---|
-| 1–4 | [Python fundamentals](python/SYLLABUS.md) | Python phase ready (weeks 1–4) |
-| 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | Week 5 ready |
-| 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned |
+| 1–4 | [Python fundamentals](python/SYLLABUS.md) | 14 of 15 modules ready. Module 12 (concurrency) is planned for week 10 |
+| 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | 2 of 13 modules ready (week 5: architecture and models) |
+| 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned (9 topics over 3 weeks, none written yet) |
 
 ### Python modules
 | # | Module | Week | Status |
@@ -57,6 +57,10 @@ Full day-by-day detail is in [docs/12-week-plan.md](docs/12-week-plan.md).
 | 14 | [Packaging](python/14-packaging/lesson.md) | 4 | Ready |
 | 15 | [Capstone: Task Tracker CLI](python/15-capstone-task-tracker/README.md) | 4 | Ready |
 
+Module 13 is checked differently: you write `test_payments.py`, and `check_tests.py` grades it. The lesson explains how. Every other Python module uses `exercises.py`.
+
+Per-folder summaries are in each track's README: [python/](python/README.md), [django/](django/README.md), [fastapi/](fastapi/README.md), [docs/](docs/README.md).
+
 ### Revision companions
 Optional interactive summaries made with Google NotebookLM. Use them for a recap after you finish a lesson; the lessons stay the source of truth, and the links are hosted by Google.
 
@@ -69,10 +73,10 @@ Optional interactive summaries made with Google NotebookLM. Use them for a recap
 
 ## Repository layout
 ```text
-python/    SYLLABUS.md, lessons, exercises and projects (weeks 1-4)
-django/    SYLLABUS.md, the Django project and notes (weeks 5-9)
-fastapi/   SYLLABUS.md, the FastAPI project and notes (weeks 10-12)
-docs/      the plan and how-to-learn guide
+python/    SYLLABUS.md, lessons, exercises and projects (weeks 1-4, module 12 in week 10)
+django/    SYLLABUS.md, the Django project (gameya_site/) and lessons (weeks 5-9)
+fastapi/   SYLLABUS.md and README (weeks 10-12, not written yet)
+docs/      the 12-week plan and the how-to-learn guide
 ```
 
 Each track has its own syllabus with an exit exam (what "I know it" means) and an advanced tier for going deeper after week 12.

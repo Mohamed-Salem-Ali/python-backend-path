@@ -1,5 +1,21 @@
 # FastAPI (weeks 10–12)
 
-Planned. The project is an AI wrapper API (summaries, explanations, flashcards): async SQLAlchemy 2.0, Alembic, Pydantic v2, JWT, background tasks, Docker and deployment.
+Planned. You build an AI wrapper API (summaries, explanations, flashcards) with async SQLAlchemy 2.0, Alembic, Pydantic v2, JWT, background tasks, Docker and deployment.
 
-See the [syllabus](SYLLABUS.md) and [../docs/12-week-plan.md](../docs/12-week-plan.md) for the week-by-week outline.
+Start with the [syllabus](SYLLABUS.md). The week-by-week outline is in [the 12-week plan](../docs/12-week-plan.md).
+
+## Weeks
+
+| Week | Topics | Status | Needs first |
+|---|---|---|---|
+| 10 | Async Python, FastAPI basics, Pydantic v2 | Planned | Python module 12 (concurrency and async), not written yet |
+| 11 | Async SQLAlchemy and Alembic, dependency injection, JWT auth | Planned | Week 10 |
+| 12 | Background work, async testing, Docker, deployment | Planned | Week 11 |
+
+The syllabus lists nine topics across these three weeks. Lesson folders are created when each lesson is written.
+
+## Files in this folder
+
+| File | What it is |
+|---|---|
+| [SYLLABUS.md](SYLLABUS.md) | Core track, project, exit exam, advanced tier |
