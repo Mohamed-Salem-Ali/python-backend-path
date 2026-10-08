@@ -1,4 +1,4 @@
-"""URLs for the circles app. Modules 01 and 04: connect each URL to a view, and name it."""
+"""URLs for the circles app. Modules 01, 04 and 05: connect each URL to a view, and name it."""
 
 from django.urls import path  # noqa: F401  (you will use it)
 
@@ -13,4 +13,7 @@ urlpatterns = [
     # TODO 8:  "gameyas/" (name "gameya_list")
     # TODO 9:  "gameyas/<int:pk>/" (name "gameya_detail")
     # TODO 10: "gameyas/<int:pk>/payments/" (name "gameya_payments")
+    # Module 05: the HTML pages.
+    # TODO 13: "" (name "home"), the GameyaHome view
+    # TODO 14: "gameyas/<int:pk>/page/" (name "gameya_page"), the GameyaPage view
 ]

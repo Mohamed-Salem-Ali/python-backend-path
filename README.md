@@ -1,6 +1,6 @@
 # Python Backend Path
 
-A hands-on, ground-up path through **Python â†’ Django â†’ FastAPI** in 12 weeks, at 2â€“5 hours a day. Each module has a lesson and a way to check your work, and the weeks build toward two deployed projects.
+A hands-on, ground-up path through **Python → Django → FastAPI** in 12 weeks, at 2–5 hours a day. Each module has a lesson and a way to check your work, and the weeks build toward two deployed projects.
 
 It is written in the open by a working developer relearning the fundamentals properly. Follow along, fork it, or open an issue if something is unclear.
 
@@ -34,9 +34,9 @@ The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by
 
 | Weeks | Phase | Status |
 |---|---|---|
-| 1â€“4 | [Python fundamentals](python/SYLLABUS.md) | 14 of 15 modules ready. Module 12 (concurrency) is planned for week 10 |
-| 5â€“9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | 4 of 13 modules ready (architecture, models, admin and forms, views) |
-| 10â€“12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned (9 topics over 3 weeks, none written yet) |
+| 1–4 | [Python fundamentals](python/SYLLABUS.md) | 14 of 15 modules ready. Module 12 (concurrency) is planned for week 10 |
+| 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | 5 of 13 modules ready (architecture, models, admin and forms, views, templates) |
+| 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned (9 topics over 3 weeks, none written yet) |
 
 ### Python modules
 | # | Module | Week | Status |

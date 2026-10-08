@@ -1,6 +1,6 @@
 """Views: functions and classes that take a request and return a response.
 
-Modules 01 (function views) and 04 (class-based views).
+Modules 01 (function views), 04 (class-based views) and 05 (HTML pages).
 """
 
 from django.http import HttpRequest, HttpResponse, JsonResponse  # noqa: F401
@@ -44,3 +44,11 @@ from django.views.generic import DetailView, ListView  # noqa: F401
 #         the payment's JSON. Invalid: return 400 with {"errors": form.errors.get_json_data()}.
 #         A duplicate week comes back under the "__all__" key. Use get_object_or_404 for the
 #         gameya.
+
+# Module 05: HTML pages. These use the templates you write under circles/templates/circles/.
+
+# TODO 11: class GameyaHome(ListView), with model = Gameya, template_name "circles/home.html"
+#          and context_object_name "gameyas". The list is ordered by name (the model does that).
+# TODO 12: class GameyaPage(DetailView), with model = Gameya and template_name
+#          "circles/gameya_detail.html". Override get_context_data() to add "members": this
+#          gameya's members. Call super() first, so the object and the other context stay.
