@@ -18,6 +18,9 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [circles/api.py](circles/api.py) | The REST API: permission, pagination and viewsets | TODO comments only (module 06) |
 | [circles/middleware.py](circles/middleware.py) | `RequestIdMiddleware`: a request id on every request and response | TODO comments only (module 07) |
 | [circles/signals.py](circles/signals.py) | Receivers that write the audit log for payments and members | TODO comments only (module 07) |
+| [pytest.ini](pytest.ini) | pytest settings: which Django settings to use, and where the tests are | TODO comments only (module 08) |
+| [circles/tests/factories.py](circles/tests/factories.py) | Factories that build test data: gameyas, members and payments | TODO comments only (module 08) |
+| [circles/tests/conftest.py](circles/tests/conftest.py) | Shared pytest fixtures: a gameya, staff and reader users and tokens, and clients | TODO comments only (module 08) |
 | `circles/templates/circles/` | HTML templates: base layout, home and gameya pages (module 05) | You create these |
 | `circles/static/circles/` | CSS for the pages (module 05) | You create this |
 | `circles/templates/circles/about.html` | About page template. You create this file | Module 01 |
@@ -38,6 +41,7 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [test_templates.py](circles/tests/test_templates.py) | The HTML pages, template inheritance, escaping and static files | 05 |
 | [test_api.py](circles/tests/test_api.py) | The REST API: serializers, viewsets, routes, tokens, permissions, pagination and filters | 06 |
 | [test_middleware_signals.py](circles/tests/test_middleware_signals.py) | The request id middleware and the audit log receivers | 07 |
+| [test_pytest_suite.py](circles/tests/test_pytest_suite.py) | pytest tests: parametrized rules, factories, fixtures, the client and query counts. Run with `pytest` | 08 |
 
 Run them from this folder, after the [week 5 setup](../WEEK-5.md#setup-day-1-15-minutes):
 
@@ -45,4 +49,10 @@ Run them from this folder, after the [week 5 setup](../WEEK-5.md#setup-day-1-15-
 python manage.py test
 ```
 
-Do not edit the test files. Most tests fail until you build the feature they describe. A few wiring checks pass from the start. That is intended.
+Do not edit the `test_*.py` files. Most tests fail until you build the feature they describe. A few wiring checks pass from the start. That is intended. The module 08 stubs, `factories.py` and `conftest.py`, are yours to fill in.
+
+`python manage.py test` also loads `test_pytest_suite.py`, which imports pytest. That is why `requirements.txt` includes pytest, pytest-django and factory-boy from the start. The module 08 tests are plain pytest functions, so run that file with pytest, not `manage.py test`:
+
+```bash
+pytest circles/tests/test_pytest_suite.py
+```
