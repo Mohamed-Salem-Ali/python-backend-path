@@ -13,7 +13,7 @@ urlpatterns = [
     # TODO 8:  "gameyas/" (name "gameya_list")
     # TODO 9:  "gameyas/<int:pk>/" (name "gameya_detail")
     # TODO 10: "gameyas/<int:pk>/payments/" (name "gameya_payments")
-    # Module 05: the HTML pages.
+    # Module 05: the HTML pages. Call .as_view() on each one.
     # TODO 13: "" (name "home"), the GameyaHome view
     # TODO 14: "gameyas/<int:pk>/page/" (name "gameya_page"), the GameyaPage view
 ]

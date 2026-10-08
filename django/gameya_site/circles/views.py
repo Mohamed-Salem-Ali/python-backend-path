@@ -22,7 +22,7 @@ from django.views.generic import DetailView, ListView  # noqa: F401
 # TODO 4: about(request) renders "circles/about.html" with the context {"title": "About Gameya"}.
 #         Create that template yourself in circles/templates/circles/about.html.
 
-# Module 04: class-based views. Each one returns JSON for now; module 05 adds HTML pages.
+# Module 04: class-based views. These stay JSON. Module 05 adds separate HTML views below.
 # Pair each view with its route in urls.py, then run its test class:
 #   TODO 5 with TODO 8  (GameyaList,     test class GameyaListTests)
 #   TODO 6 with TODO 9  (GameyaDetail,   test class GameyaDetailTests)
@@ -46,9 +46,14 @@ from django.views.generic import DetailView, ListView  # noqa: F401
 #         gameya.
 
 # Module 05: HTML pages. These use the templates you write under circles/templates/circles/.
+# Pair each view with its route in urls.py, then run its test class:
+#   TODO 11 with TODO 13 (GameyaHome, test class HomePageTests)
+#   TODO 12 with TODO 14 (GameyaPage, test class GameyaPageTests)
 
 # TODO 11: class GameyaHome(ListView), with model = Gameya, template_name "circles/home.html"
 #          and context_object_name "gameyas". The list is ordered by name (the model does that).
+#          A wrong context name shows as an empty page, not an error: check the name first.
 # TODO 12: class GameyaPage(DetailView), with model = Gameya and template_name
 #          "circles/gameya_detail.html". Override get_context_data() to add "members": this
-#          gameya's members. Call super() first, so the object and the other context stay.
+#          gameya's members, loaded from self.object.members. Call super() first, so the
+#          object and the other context stay.

@@ -12,9 +12,9 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [circles/](circles/) | The app that holds the Gameya domain | Scaffold |
 | [circles/models.py](circles/models.py) | Four models: `Gameya`, `Member`, `Payment`, `PayoutSlot` | Stub (module 02) |
 | [circles/queries.py](circles/queries.py) | Reusable query functions | Stub (module 02) |
-| [circles/views.py](circles/views.py) | Function views (health, hello, add, about) and class-based views (list, detail, payments) | TODO comments only (modules 01 and 04) |
+| [circles/views.py](circles/views.py) | Function views (health, hello, add, about) and class-based views (list, detail, payments) | TODO comments only (modules 01, 04 and 05) |
 | [circles/urls.py](circles/urls.py) | App URL routes | TODO comments only (modules 01, 04 and 05) |
-| `circles/templates/circles/` | HTML templates: base layout, home and gameya pages, about (module 05) | You create these |
+| `circles/templates/circles/` | HTML templates: base layout, home and gameya pages (module 05) | You create these |
 | `circles/static/circles/` | CSS for the pages (module 05) | You create this |
 | `circles/templates/circles/about.html` | About page template. You create this file | Module 01 |
 | [circles/admin.py](circles/admin.py) | Admin registrations | TODO comments only (module 03) |

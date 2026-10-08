@@ -51,4 +51,4 @@ Without notes you can:
 - [ ] Say why `turns` and `payout` are properties, not columns
 
 ## Notes for Week 6
-Next week adds the admin site, forms and class-based views on these same models, so keep your `circles/` code. If a model test still fails, finish it before moving on.
+Next week adds the admin site, forms, class-based views and templates on these same models, so keep your `circles/` code. If a model test still fails, finish it before moving on.

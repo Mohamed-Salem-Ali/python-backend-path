@@ -2,15 +2,20 @@
 
 Run:  python manage.py test circles.tests.test_templates
 
-These tests use the Module 02 models. They render HTML, so they also need the Module 04 and
-Module 05 views and URLs. Finish those first.
+These tests use the Module 02 models and the Module 01 about page. The HTML views and their
+URLs are the TODOs 11-14 in views.py and urls.py. Finish those first.
 """
 
+import re
 from datetime import date
 
-from django.test import TestCase
+from django.contrib.staticfiles import finders
+from django.test import SimpleTestCase, TestCase, override_settings
 from django.urls import reverse
+from django.views.generic import DetailView, ListView
 
+# Import the module, not the names: a missing view then fails only its own tests.
+from circles import views as circle_views
 from circles.models import Gameya, Member
 
 
@@ -29,6 +34,8 @@ def make_gameya(**overrides):
 class HomePageTests(TestCase):
     @classmethod
     def setUpTestData(cls):
+        # Created out of name order, so a sort by id cannot pass for a sort by name.
+        cls.gamma = make_gameya(name="Gamma")
         cls.alpha = make_gameya(name="Alpha")
         cls.beta = make_gameya(name="Beta")
 
@@ -37,11 +44,16 @@ class HomePageTests(TestCase):
         self.assertEqual(response.status_code, 200)
         html = response.content.decode()
         self.assertLess(html.index("Alpha"), html.index("Beta"))
+        self.assertLess(html.index("Beta"), html.index("Gamma"))
+        self.assertNotContains(response, "No gameyas yet.")
 
-    def test_each_gameya_links_to_its_page(self):
-        response = self.client.get(reverse("home"))
-        self.assertContains(response, reverse("gameya_page", args=[self.alpha.pk]))
-        self.assertContains(response, reverse("gameya_page", args=[self.beta.pk]))
+    def test_each_gameya_links_to_its_own_page(self):
+        html = self.client.get(reverse("home")).content.decode()
+        for gameya in (self.alpha, self.beta):
+            url = re.escape(reverse("gameya_page", args=[gameya.pk]))
+            name = re.escape(gameya.name)
+            # Allows a class attribute on the link, but ties the link to the gameya's name.
+            self.assertRegex(html, rf'href="{url}"[^>]*>\s*{name}\s*</a>')
 
     def test_the_home_page_extends_the_base_layout(self):
         response = self.client.get(reverse("home"))
@@ -53,16 +65,22 @@ class HomePageTests(TestCase):
         response = self.client.get(reverse("home"))
         self.assertContains(response, "No gameyas yet.")
 
+    def test_gameya_names_are_escaped_on_the_home_page(self):
+        make_gameya(name="<b>Zed</b>")
+        response = self.client.get(reverse("home"))
+        self.assertNotContains(response, "<b>Zed</b>")
+        self.assertContains(response, "&lt;b&gt;Zed&lt;/b&gt;")
+
 
 class GameyaPageTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        # 10 weeks at 500 a share: the payout is 500 * 10 = 5000, and with one payout a
-        # week the weekly pot is also 5000.
-        cls.gameya = make_gameya(name="Alpha", weeks=10, per_week=1, share_value=500)
-        # Ali has two shares, so his weekly due is 1000. Sara has one, so hers is 500.
-        Member.objects.create(gameya=cls.gameya, name="Ali", shares=2)
-        Member.objects.create(gameya=cls.gameya, name="Sara", shares=1)
+        # 8 weeks, 2 payouts a week, 350 a share. Payout = 350 * 8 = 2800.
+        # Weekly pot = 2 payouts * 2800 = 5600.
+        cls.gameya = make_gameya(name="Alpha", weeks=8, per_week=2, share_value=350)
+        # Ali has two shares: his weekly due is 700. Sara has three: hers is 1050.
+        cls.ali = Member.objects.create(gameya=cls.gameya, name="Ali", shares=2)
+        cls.sara = Member.objects.create(gameya=cls.gameya, name="Sara", shares=3)
 
     def page(self, gameya=None):
         return self.client.get(reverse("gameya_page", args=[(gameya or self.gameya).pk]))
@@ -72,14 +90,26 @@ class GameyaPageTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "circles/gameya_detail.html")
         self.assertContains(response, "Alpha")
-        self.assertContains(response, "5000")
+        self.assertContains(response, "2800")  # the payout
+        self.assertContains(response, "5600")  # the weekly pot
 
     def test_lists_each_member_with_their_weekly_due(self):
         response = self.page()
-        self.assertContains(response, "Ali")
-        self.assertContains(response, "Sara")
-        self.assertContains(response, "1000")
-        self.assertContains(response, "500")
+        self.assertNotContains(response, "No members yet.")
+        # The name column comes before the due column in each row, and Ali's row comes first.
+        self.assertRegex(response.content.decode(), r"Ali\D*700\D*Sara\D*1050")
+
+    def test_the_members_are_in_the_context_in_creation_order(self):
+        response = self.page()
+        self.assertEqual([m.name for m in response.context["members"]], ["Ali", "Sara"])
+
+    def test_the_members_load_in_a_fixed_number_of_queries(self):
+        for i in range(3):
+            Member.objects.create(gameya=self.gameya, name=f"Member {i}", shares=1)
+        # One query for the gameya, one for its members. Each member's due must not
+        # reload the gameya.
+        with self.assertNumQueries(2):
+            self.page()
 
     def test_member_names_are_escaped(self):
         Member.objects.create(gameya=self.gameya, name="<script>alert(1)</script>", shares=1)
@@ -87,8 +117,11 @@ class GameyaPageTests(TestCase):
         self.assertNotContains(response, "<script>alert(1)</script>")
         self.assertContains(response, "&lt;script&gt;alert(1)&lt;/script&gt;")
 
-    def test_the_stylesheet_is_loaded_with_the_static_tag(self):
-        self.assertContains(self.page(), "/static/circles/site.css")
+    def test_the_gameya_name_is_escaped_on_its_page(self):
+        zed = make_gameya(name="<b>Zed</b>")
+        response = self.page(zed)
+        self.assertNotContains(response, "<b>Zed</b>")
+        self.assertContains(response, "&lt;b&gt;Zed&lt;/b&gt;")
 
     def test_a_gameya_without_members_says_so(self):
         empty = make_gameya(name="Empty")
@@ -103,11 +136,45 @@ class GameyaPageTests(TestCase):
 
 
 class BaseLayoutTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.gameya = make_gameya(name="Alpha")
+
     def test_the_about_page_uses_the_base_layout(self):
         response = self.client.get(reverse("about"))
         self.assertTemplateUsed(response, "circles/base.html")
         self.assertContains(response, "About Gameya")
 
-    def test_the_base_layout_links_back_home(self):
-        response = self.client.get(reverse("about"))
-        self.assertContains(response, 'href="/"')
+    def test_every_main_page_uses_the_base_layout_links_home_and_loads_the_stylesheet(self):
+        pages = [
+            reverse("home"),
+            reverse("about"),
+            reverse("gameya_page", args=[self.gameya.pk]),
+        ]
+        for page in pages:
+            with self.subTest(page=page):
+                response = self.client.get(page)
+                self.assertTemplateUsed(response, "circles/base.html")
+                # A hand-typed href="/" passes this check too. A test cannot tell it from
+                # {% url 'home' %} cheaply, so the lesson asks for {% url %}.
+                self.assertContains(response, 'href="/"')
+                self.assertContains(response, "/static/circles/site.css")
+
+    @override_settings(STATIC_URL="/assets/")
+    def test_the_stylesheet_url_follows_the_static_settings(self):
+        self.assertContains(self.client.get(reverse("home")), "/assets/circles/site.css")
+
+    def test_the_stylesheet_file_exists(self):
+        self.assertIsNotNone(finders.find("circles/site.css"))
+
+
+class PageViewTests(SimpleTestCase):
+    def test_the_home_page_is_a_list_view(self):
+        self.assertTrue(issubclass(circle_views.GameyaHome, ListView))
+
+    def test_the_gameya_page_is_a_detail_view_that_adds_its_own_context(self):
+        self.assertTrue(issubclass(circle_views.GameyaPage, DetailView))
+        self.assertIsNot(
+            circle_views.GameyaPage.get_context_data,
+            DetailView.get_context_data,
+        )
