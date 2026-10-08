@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # TODO 15 (module 06): add "rest_framework" and "rest_framework.authtoken" here, above
+    # "circles". Then run `python manage.py migrate`, so the token table exists.
     "circles",  # our app
 ]
 

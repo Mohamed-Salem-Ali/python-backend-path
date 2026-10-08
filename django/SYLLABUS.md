@@ -15,7 +15,7 @@ Weeks 5–9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [P
 | 03 | [Admin and forms](03-admin-forms/lesson.md) | 6 | configure the admin, write forms and validation |
 | 04 | [Views](04-views/lesson.md) | 6 | choose between function and class-based views |
 | 05 | [Templates](05-templates/lesson.md) | 6 | render templates with inheritance |
-| 06 | Django REST Framework | 8 | serializers, viewsets and routers, permissions, auth, pagination, filtering |
+| 06 | [Django REST Framework](06-drf/lesson.md) | 8 | serializers, viewsets and routers, permissions, auth, pagination, filtering |
 | 07 | Middleware and signals | 7 | write middleware; use signals (and know when not to) |
 | 08 | Testing | 7 | test with pytest-django, factories and the test client |
 | 09 | Caching and performance | 7 | find and fix N+1 queries (`select_related`, `prefetch_related`), use the cache framework |

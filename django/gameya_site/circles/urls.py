@@ -1,4 +1,4 @@
-"""URLs for the circles app. Modules 01, 04 and 05: connect each URL to a view, and name it."""
+"""URLs for the circles app. Modules 01, 04, 05 and 06: connect each URL to a view, and name it."""
 
 from django.urls import path  # noqa: F401  (you will use it)
 
@@ -16,4 +16,13 @@ urlpatterns = [
     # Module 05: the HTML pages. Call .as_view() on each one.
     # TODO 13: "" (name "home"), the GameyaHome view
     # TODO 14: "gameyas/<int:pk>/page/" (name "gameya_page"), the GameyaPage view
+    # Module 06: the REST API. Import include from django.urls, DefaultRouter from
+    # rest_framework.routers, obtain_auth_token from rest_framework.authtoken.views, and
+    # the api module (from . import api) at the top of this file.
+    # TODO 22: router = DefaultRouter(). Register the viewsets from api.py:
+    #          "gameyas" (basename "gameya") and "members" (basename "member").
+    #          Add path("api/", include(router.urls)), and path("api/token/",
+    #          obtain_auth_token, name="api-token").
+    #          Do this last, after TODO 20 and 21. register() needs both viewsets to exist.
+    #          Until then the whole project fails to start, and every module's tests fail with it.
 ]
