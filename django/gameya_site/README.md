@@ -15,7 +15,8 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [circles/views.py](circles/views.py) | Health, hello, add and about views | TODO comments only (module 01) |
 | [circles/urls.py](circles/urls.py) | App URL routes | TODO comments only (module 01) |
 | `circles/templates/circles/about.html` | About page template. You create this file | Module 01 |
-| [circles/admin.py](circles/admin.py) | Admin registrations | Stub (week 6) |
+| [circles/admin.py](circles/admin.py) | Admin registrations | TODO comments only (module 03) |
+| [circles/forms.py](circles/forms.py) | `PaymentForm` and `JoinForm` | TODO comments only (module 03) |
 | [circles/migrations/](circles/migrations/) | Generated migration files | Created by `makemigrations` |
 | [circles/tests/](circles/tests/) | Acceptance tests (see below) | Ready |
 
@@ -26,6 +27,7 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [test_architecture.py](circles/tests/test_architecture.py) | URLs, views and templates | 01 |
 | [test_models.py](circles/tests/test_models.py) | The four models, their relations and constraints | 02 |
 | [test_queries.py](circles/tests/test_queries.py) | The functions in `queries.py`, including query counts | 02 |
+| [test_admin_forms.py](circles/tests/test_admin_forms.py) | The admin registrations, admin pages, and the forms | 03 |
 
 Run them from this folder, after the [week 5 setup](../WEEK-5.md#setup-day-1-15-minutes):
 

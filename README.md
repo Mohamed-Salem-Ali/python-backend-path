@@ -35,7 +35,7 @@ The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by
 | Weeks | Phase | Status |
 |---|---|---|
 | 1–4 | [Python fundamentals](python/SYLLABUS.md) | 14 of 15 modules ready. Module 12 (concurrency) is planned for week 10 |
-| 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | 2 of 13 modules ready (week 5: architecture and models) |
+| 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | 3 of 13 modules ready (architecture, models, admin and forms) |
 | 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned (9 topics over 3 weeks, none written yet) |
 
 ### Python modules
