@@ -1,6 +1,6 @@
 """The data model. Module 02.
 
-Four models describe a rotating savings circle:
+Four models describe a rotating savings circle (module 07 adds a fifth, AuditEntry, at the end):
 
     Gameya  1 ---- *  Member  1 ---- *  Payment
        |
@@ -83,3 +83,13 @@ class PayoutSlot(models.Model):
     """
 
     # TODO
+
+
+# Module 07: the audit log.
+# TODO 26: class AuditEntry(models.Model). Fields:
+#   action      text, up to 10 characters: "created" or "deleted"
+#   model       text, up to 20 characters: the lowercase model name, "payment" or "member"
+#   object_id   a PositiveBigIntegerField: the pk of the row that changed
+#   summary     text, up to 200 characters: str() of that row, taken when the event happens
+#   created_at  set automatically when the row is created
+# Meta: order by id. Then run `python manage.py makemigrations circles` and `migrate`.

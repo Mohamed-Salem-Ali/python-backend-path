@@ -10,12 +10,14 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [requirements.txt](requirements.txt) | Packages needed to run the project | Ready |
 | [config/](config/) | Settings, root URL routes, WSGI and ASGI entry points | Ready |
 | [circles/](circles/) | The app that holds the Gameya domain | Scaffold |
-| [circles/models.py](circles/models.py) | Four models: `Gameya`, `Member`, `Payment`, `PayoutSlot` | Stub (module 02) |
+| [circles/models.py](circles/models.py) | Four models: `Gameya`, `Member`, `Payment`, `PayoutSlot`. Module 07 adds `AuditEntry` | Stub (module 02) |
 | [circles/queries.py](circles/queries.py) | Reusable query functions | Stub (module 02) |
 | [circles/views.py](circles/views.py) | Function views (health, hello, add, about) and class-based views (list, detail, payments) | TODO comments only (modules 01, 04 and 05) |
 | [circles/urls.py](circles/urls.py) | App URL routes | TODO comments only (modules 01, 04, 05 and 06) |
 | [circles/serializers.py](circles/serializers.py) | Serializers: `GameyaSerializer` and `MemberSerializer` | TODO comments only (module 06) |
 | [circles/api.py](circles/api.py) | The REST API: permission, pagination and viewsets | TODO comments only (module 06) |
+| [circles/middleware.py](circles/middleware.py) | `RequestIdMiddleware`: a request id on every request and response | TODO comments only (module 07) |
+| [circles/signals.py](circles/signals.py) | Receivers that write the audit log for payments and members | TODO comments only (module 07) |
 | `circles/templates/circles/` | HTML templates: base layout, home and gameya pages (module 05) | You create these |
 | `circles/static/circles/` | CSS for the pages (module 05) | You create this |
 | `circles/templates/circles/about.html` | About page template. You create this file | Module 01 |
@@ -35,6 +37,7 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [test_class_views.py](circles/tests/test_class_views.py) | The class-based views: list, detail and payments API | 04 |
 | [test_templates.py](circles/tests/test_templates.py) | The HTML pages, template inheritance, escaping and static files | 05 |
 | [test_api.py](circles/tests/test_api.py) | The REST API: serializers, viewsets, routes, tokens, permissions, pagination and filters | 06 |
+| [test_middleware_signals.py](circles/tests/test_middleware_signals.py) | The request id middleware and the audit log receivers | 07 |
 
 Run them from this folder, after the [week 5 setup](../WEEK-5.md#setup-day-1-15-minutes):
 
