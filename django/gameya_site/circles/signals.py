@@ -23,4 +23,5 @@ from .models import Member, Payment  # noqa: F401
 #          for post_save and post_delete of Member, and for post_save and post_delete of Payment.
 #          Each one calls invalidate_summary(gameya_id) from circles/caching.py. For a member, the
 #          gameya id is the member's gameya_id. For a payment, it is the gameya of its member.
-#          Import invalidate_summary from .caching only once it exists (TODO 31 to 33 are done).
+#          Import invalidate_summary from .caching. Its stub is already there; TODO 33 in
+#          caching.py is where its body goes.

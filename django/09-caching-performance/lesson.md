@@ -49,6 +49,8 @@ for book in books:
     print(book.title, [review.stars for review in book.review_set.all()])
 ```
 
+A prefetch lookup can follow several relations, with double underscores. `Book.objects.prefetch_related("review_set__reader")` loads the reviews, then their readers, with one query for each relation in the path, however many books there are.
+
 Use `.all()` after a prefetch. Calling `.filter()` on it runs a new query, because the prefetched list is ignored:
 
 ```python
@@ -86,7 +88,7 @@ CACHES = {
 }
 ```
 
-`LocMemCache` keeps entries in the memory of one process. Each worker process has its own cache, and a restart empties it. Week 9 switches to Redis, which every process shares.
+`LocMemCache` keeps entries in the memory of one process. Each worker process has its own cache, and a restart empties it. A production setup can use Redis instead, which every process shares.
 
 The API is short:
 
@@ -126,9 +128,11 @@ Remember the module 07 rule: receivers run only when the app loads them, so `rea
 Three gotchas:
 - `QuerySet.update()`, `bulk_create()` and `bulk_update()` do not send signals. After them, delete the cache entries yourself.
 - Deleting a parent sends `post_delete` for each child, so cascades clear the cache too.
-- A request can read the old data again between your write and the commit, and cache it again. Clear on commit instead: `transaction.on_commit(lambda: cache.delete(key))`. Django runs that callback only after the transaction commits, so no reader can rebuild the entry from uncommitted data.
+- A request that read the old data before your commit can store it again after your delete. Clearing on commit narrows that window: `transaction.on_commit(lambda: cache.delete(key))` runs the delete only after the commit. A timeout caps how long a stale entry can live, so keep one.
 
 Test invalidation directly: read the value, change the data, read again, and check the new value. Cached tests also need an empty cache at the start of each test, because the cache outlives the transaction rollback that resets the database.
+
+Tests run inside a transaction that is rolled back, so Django never runs `on_commit` callbacks there. If your receivers use `on_commit`, wrap the change in the `django_capture_on_commit_callbacks` fixture with `execute=True`, so the callbacks run when the block ends.
 
 ## 9. Caching a whole page (read only)
 Django can cache a view's full response: `@cache_page(60)` keeps a GET response for 60 seconds, keyed by the URL. A logged-in page needs `vary_on_cookie`, or one user's page would be served to another. A template can cache a fragment:
@@ -157,21 +161,21 @@ Page caches are simple, but they go stale: `cache_page` does not know when the d
 7. The cache loses all its entries. What still works, and what gets slower?
 
 ## Do the exercises
-1. **Measure.** After TODO 31, open `python manage.py shell` and use `CaptureQueriesContext` to count the queries that `build_summary` runs for a gameya you create. Then add a second member and count again.
-2. **Settings.** Add the `CACHES` setting (TODO 34), with the timeout that the TODO asks for.
-3. **Summary.** Write `build_summary` (TODO 31) so that the number of queries does not grow with the members. Use prefetching.
+1. **Settings.** Add the `CACHES` setting (TODO 34), with the timeout that the TODO asks for.
+2. **Summary.** Write `build_summary` (TODO 31) so that the number of queries does not grow with the members. Use prefetching.
+3. **Measure.** Open `python manage.py shell` and use `CaptureQueriesContext` to count the queries that `build_summary` runs for a gameya with one member and one payment. Then add a second member with a payment and count again. A gameya with no members runs fewer queries, because Django skips the payments query when there is nothing to load.
 4. **Cache.** Write `gameya_summary` (TODO 32), which uses the cache and rebuilds on a miss.
 5. **Invalidation.** Write `invalidate_summary` (TODO 33), and the receivers in `circles/signals.py`, so that a member or a payment change clears the entry.
-6. **Run the file.** Run `pytest circles/tests/test_performance.py`. Stop when all 14 tests pass.
+6. **Run the file.** Run `pytest circles/tests/test_performance.py`. Stop when all 18 tests pass.
 7. **Try a failure on purpose.** Remove the prefetch from `build_summary`, run the tests, and read the query-count failure. Then put it back.
 8. **Run everything.** Run `pytest` in `django/gameya_site`. Earlier tests must still pass, because the cache must not change what the pages show.
 
-**Stretch (not tested):** put `@cache_page(60)` on the gameya list view from module 04. Write a test that a second request runs no queries. Then add a payment, and explain why the list can show the old data until the cache expires.
+**Stretch (not tested):** put `@cache_page(60)` on the gameya list view from module 04. Write a test that a second request runs no queries. Then add a payment, and explain why the list can show the old data until the cache expires. Remove the decorator when you finish, or the cached page stays in the shared cache and affects other tests.
 
 **Project step:** the gameya summary is now built with a fixed number of queries and cached, and it clears on every change. Later modules can reuse `gameya_summary` without repeating the work.
 
 ## Exit checklist
-- [ ] `pytest circles/tests/test_performance.py` passes all 14 tests.
+- [ ] `pytest circles/tests/test_performance.py` passes all 18 tests.
 - [ ] You can count the queries of a block with `CaptureQueriesContext`, and explain where an N+1 comes from.
 - [ ] You can say when to use `select_related` and when to use `prefetch_related`.
 - [ ] You can name the three rules for cache keys and values, and say what invalidation must cover.
