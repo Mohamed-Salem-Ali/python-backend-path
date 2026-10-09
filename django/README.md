@@ -16,7 +16,7 @@ Start with [WEEK-5.md](WEEK-5.md). The code lives in [`gameya_site/`](gameya_sit
 | 06 | [06-drf](06-drf/) | Django REST Framework | 8 | Ready | [lesson](06-drf/lesson.md), [checks](gameya_site/circles/tests/test_api.py) |
 | 07 | [07-middleware-signals](07-middleware-signals/) | Middleware and signals | 7 | Ready | [lesson](07-middleware-signals/lesson.md), [checks](gameya_site/circles/tests/test_middleware_signals.py) |
 | 08 | [08-testing](08-testing/) | Testing with pytest-django and factories | 7 | Ready | [lesson](08-testing/lesson.md), [checks](gameya_site/circles/tests/test_pytest_suite.py) |
-| 09 | `09-caching-performance` | Caching and N+1 queries | 7 | Planned | None yet |
+| 09 | [09-caching-performance](09-caching-performance/) | Caching and N+1 queries | 7 | Ready | [lesson](09-caching-performance/lesson.md), [checks](gameya_site/circles/tests/test_performance.py) |
 | 10 | `10-background-tasks` | Celery in eager mode | 9 | Planned | None yet |
 | 11 | `11-auth-security` | Auth and security | 9 | Planned | None yet |
 | 12 | `12-deployment` | Deployment | 9 | Planned | None yet |

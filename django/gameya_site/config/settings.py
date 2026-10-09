@@ -84,3 +84,8 @@ USE_TZ = True  # store datetimes in UTC, convert to TIME_ZONE for display
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# TODO 34 (module 09): add a CACHES setting with one entry named "default": the in-memory
+#          backend (LocMemCache), a LOCATION name of your choice, and a TIMEOUT of 300 seconds.
+#          Django uses LocMemCache even without this setting. Writing it down makes the choice
+#          and the timeout visible. Week 9 switches the backend to Redis.

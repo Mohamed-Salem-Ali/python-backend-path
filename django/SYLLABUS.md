@@ -18,7 +18,7 @@ Weeks 5–9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [P
 | 06 | [Django REST Framework](06-drf/lesson.md) | 8 | serializers, viewsets and routers, permissions, auth, pagination, filtering |
 | 07 | [Middleware and signals](07-middleware-signals/lesson.md) | 7 | write middleware; use signals (and know when not to) |
 | 08 | [Testing](08-testing/lesson.md) | 7 | test with pytest-django, factories and the test client |
-| 09 | Caching and performance | 7 | find and fix N+1 queries (`select_related`, `prefetch_related`), use the cache framework |
+| 09 | [Caching and performance](09-caching-performance/lesson.md) | 7 | find and fix N+1 queries (`select_related`, `prefetch_related`), use the cache framework |
 | 10 | Background tasks | 9 | run Celery tasks, schedule jobs |
 | 11 | Auth and security | 9 | sessions vs JWT, CSRF, XSS, ownership permissions, secure settings |
 | 12 | Deployment | 9 | gunicorn, static files, env-driven settings, deploy to a real host |

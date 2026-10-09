@@ -18,3 +18,9 @@ from .models import Member, Payment  # noqa: F401
 #          object_id = instance.pk, and summary = str(instance). Store the text now. After a
 #          delete the row is gone, so do not build the summary later. Deleting a member also
 #          deletes its payments, so those fire (b) too. Payouts and gameyas are not audited.
+
+# TODO 33 (module 09): clear the cached summary when a member or a payment changes. Add receivers
+#          for post_save and post_delete of Member, and for post_save and post_delete of Payment.
+#          Each one calls invalidate_summary(gameya_id) from circles/caching.py. For a member, the
+#          gameya id is the member's gameya_id. For a payment, it is the gameya of its member.
+#          Import invalidate_summary from .caching only once it exists (TODO 31 to 33 are done).

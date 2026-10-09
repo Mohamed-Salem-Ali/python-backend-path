@@ -17,7 +17,8 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [circles/serializers.py](circles/serializers.py) | Serializers: `GameyaSerializer` and `MemberSerializer` | TODO comments only (module 06) |
 | [circles/api.py](circles/api.py) | The REST API: permission, pagination and viewsets | TODO comments only (module 06) |
 | [circles/middleware.py](circles/middleware.py) | `RequestIdMiddleware`: a request id on every request and response | TODO comments only (module 07) |
-| [circles/signals.py](circles/signals.py) | Receivers that write the audit log for payments and members | TODO comments only (module 07) |
+| [circles/signals.py](circles/signals.py) | Receivers that write the audit log for payments and members, and clear the summary cache | TODO comments only (modules 07 and 09) |
+| [circles/caching.py](circles/caching.py) | The gameya summary: built with few queries, kept in the cache, and cleared on change | TODO comments only (module 09) |
 | [pytest.ini](pytest.ini) | pytest settings: which Django settings to use, and where the tests are | TODO comments only (module 08) |
 | [circles/tests/factories.py](circles/tests/factories.py) | Factories that build test data: gameyas, members and payments | TODO comments only (module 08) |
 | [circles/tests/conftest.py](circles/tests/conftest.py) | Shared pytest fixtures: a gameya, staff and reader users and tokens, and clients | TODO comments only (module 08) |
@@ -42,6 +43,7 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [test_api.py](circles/tests/test_api.py) | The REST API: serializers, viewsets, routes, tokens, permissions, pagination and filters | 06 |
 | [test_middleware_signals.py](circles/tests/test_middleware_signals.py) | The request id middleware and the audit log receivers | 07 |
 | [test_pytest_suite.py](circles/tests/test_pytest_suite.py) | pytest tests: parametrized rules, factories, fixtures, the client and query counts. Run with `pytest` | 08 |
+| [test_performance.py](circles/tests/test_performance.py) | pytest tests: query counts for the summary, the cache, and its invalidation. Run with `pytest` | 09 |
 
 Run them from this folder, after the [week 5 setup](../WEEK-5.md#setup-day-1-15-minutes):
 
