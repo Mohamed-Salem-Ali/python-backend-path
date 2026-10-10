@@ -1,0 +1,13 @@
+# TODO 46 (module 12): the Render blueprint. Render reads this file from the folder you set as the
+#   service's root directory (django/gameya_site, if you deploy this project). Section 6 of the
+#   module 12 lesson explains each line. Write one web service with these parts:
+#   - runtime python, and a buildCommand that installs the requirements and then runs
+#     collectstatic in non-interactive mode.
+#   - a startCommand that first runs the migrations, also in non-interactive mode, and then starts
+#     the app with gunicorn on config.wsgi:application. Bind it to 0.0.0.0 and the PORT variable
+#     that Render sets, because Render cannot reach a server bound to 127.0.0.1.
+#   - healthCheckPath: /
+#   - envVars: PYTHON_VERSION (3.12.6), DJANGO_PRODUCTION (1), and DJANGO_SECRET_KEY, which Render
+#     generates for you (generateValue: true), so the key never sits in this file.
+#     DJANGO_ALLOWED_HOSTS and DATABASE_URL are set in the Render dashboard (sync: false).
+# Until the file has its lines, the deployment tests fail.

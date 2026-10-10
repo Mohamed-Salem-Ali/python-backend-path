@@ -26,6 +26,8 @@ Thumbs.db
 # Local data
 *.sqlite3
 *.db
+# Output of collectstatic (module 12)
+staticfiles/
 
 # Personal notes (keep your own learning log out of the public repo)
 notes.md

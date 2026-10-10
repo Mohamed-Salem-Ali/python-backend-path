@@ -125,3 +125,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #      SECURE_SSL_REDIRECT, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_HSTS_SECONDS = 3600,
 #      and SECURE_HSTS_INCLUDE_SUBDOMAINS and SECURE_HSTS_PRELOAD, both True.
 #   Then run `python manage.py check --deploy` with DJANGO_PRODUCTION=1 and a long key.
+
+# TODO 44 (module 12): static files, served by WhiteNoise. Section 3 of the module 12 lesson.
+#   1. STATIC_ROOT: a folder named "staticfiles" inside BASE_DIR. collectstatic copies every static
+#      file there, and WhiteNoise serves them from there.
+#   2. MIDDLEWARE: add "whitenoise.middleware.WhiteNoiseMiddleware" directly after
+#      "django.middleware.security.SecurityMiddleware". The order matters: it must run early.
+
+# TODO 45 (module 12): the database. Section 4 of the module 12 lesson.
+#   Keep the SQLite entry in DATABASES for local work. When the environment variable DATABASE_URL
+#   is set, use PostgreSQL instead. Read the URL with urllib.parse.urlparse (import it at the top).
+#   Fill in ENGINE "django.db.backends.postgresql", NAME (the path without its leading slash),
+#   USER, PASSWORD, HOST, and PORT (use 5432 when the URL has none).
