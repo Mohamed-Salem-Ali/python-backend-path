@@ -34,7 +34,7 @@ The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by
 
 | Weeks | Phase | Status |
 |---|---|---|
-| 1–4 | [Python fundamentals](python/SYLLABUS.md) | 14 of 15 modules ready. Module 12 (concurrency) is planned for week 10 |
+| 1–4 | [Python fundamentals](python/SYLLABUS.md) | All 15 modules ready. Module 12 (concurrency and async) is for week 10, before FastAPI |
 | 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | All 13 modules written (architecture, models, admin and forms, views, templates, DRF, middleware and signals, testing, caching and performance, background tasks, auth and security, deployment, and the capstone write-up) |
 | 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | Planned (9 topics over 3 weeks, none written yet) |
 
@@ -52,7 +52,7 @@ The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by
 | 09 | [Iterators and generators](python/09-iterators-generators/lesson.md) | 3 | Ready |
 | 10 | [Decorators](python/10-decorators/lesson.md) | 3 | Ready |
 | 11 | [Typing](python/11-typing/lesson.md) | 4 | Ready |
-| 12 | Concurrency and async | 10 | Planned |
+| 12 | [Concurrency and async](python/12-concurrency-async/lesson.md) | 10 | Ready |
 | 13 | [Testing](python/13-testing/lesson.md) | 4 | Ready |
 | 14 | [Packaging](python/14-packaging/lesson.md) | 4 | Ready |
 | 15 | [Capstone: Task Tracker CLI](python/15-capstone-task-tracker/README.md) | 4 | Ready |

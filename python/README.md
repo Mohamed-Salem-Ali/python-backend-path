@@ -23,7 +23,7 @@ A passing file prints `All checks passed`. Week projects live in `week-N-project
 | 09 | [09-iterators-generators](09-iterators-generators/) | Iterators and generators | 3 | Ready | lesson, exercises |
 | 10 | [10-decorators](10-decorators/) | Decorators | 3 | Ready | lesson, exercises |
 | 11 | [11-typing](11-typing/) | Typing | 4 | Ready | lesson, exercises |
-| 12 | `12-concurrency-async` | Concurrency and async | 10 | Planned | None yet |
+| 12 | [12-concurrency-async](12-concurrency-async/) | Concurrency and async | 10 | Ready | lesson, exercises |
 | 13 | [13-testing](13-testing/) | Testing with pytest | 4 | Ready | lesson, `payments.py` (code under test), `test_payments.py` (you write it), `check_tests.py` (grades your tests) |
 | 14 | [14-packaging](14-packaging/) | Packaging | 4 | Ready | lesson, exercises, `gameya_toolkit/` |
 | 15 | [15-capstone-task-tracker](15-capstone-task-tracker/) | Capstone: Task Tracker CLI | 4 | Ready | README, `src/`, `tests/` |

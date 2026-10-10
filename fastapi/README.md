@@ -8,7 +8,7 @@ Start with the [syllabus](SYLLABUS.md). The week-by-week outline is in [the 12-w
 
 | Week | Topics | Status | Needs first |
 |---|---|---|---|
-| 10 | Async Python, FastAPI basics, Pydantic v2 | Planned | Python module 12 (concurrency and async), not written yet |
+| 10 | Async Python, FastAPI basics, Pydantic v2 | Planned | Python module 12 (concurrency and async) is written; the FastAPI lessons are not |
 | 11 | Async SQLAlchemy and Alembic, dependency injection, JWT auth | Planned | Week 10 |
 | 12 | Background work, async testing, Docker, deployment | Planned | Week 11 |
 
