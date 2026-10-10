@@ -8,7 +8,7 @@ Start with the [syllabus](SYLLABUS.md). The week-by-week outline is in [the 12-w
 
 | Week | Topics | Status | Needs first |
 |---|---|---|---|
-| 10 | Async Python, FastAPI basics, Pydantic v2 | In progress: [async Python](../python/12-concurrency-async/lesson.md) and [FastAPI basics](10-basics/lesson.md) are written. Pydantic is next | Python module 12 |
+| 10 | Async Python, FastAPI basics, Pydantic v2 | In progress: [async Python](../python/12-concurrency-async/lesson.md), [FastAPI basics](10-basics/lesson.md) and [Pydantic](10-pydantic/lesson.md) are written. The database is next | Python module 12 |
 | 11 | Async SQLAlchemy and Alembic, dependency injection, JWT auth | Planned | Week 10 |
 | 12 | Background work, async testing, Docker, deployment | Planned | Week 11 |
 
@@ -20,4 +20,5 @@ The syllabus lists nine topics across these three weeks. Lesson folders are crea
 |---|---|
 | [SYLLABUS.md](SYLLABUS.md) | Core track, project, exit exam, advanced tier |
 | [10-basics/](10-basics/) | Lesson: routing, parameters, response models and status codes |
+| [10-pydantic/](10-pydantic/) | Lesson: validation rules, input and output schemas, and settings from the environment |
 | [study-api/](study-api/) | The project: the Study API, with its tests |
