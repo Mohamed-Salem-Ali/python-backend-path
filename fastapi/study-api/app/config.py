@@ -23,3 +23,9 @@ def get_settings():  # TODO 7: return Settings()
 # TODO 12 (database): add a second field to Settings: database_url, a text value with the default
 #         "sqlite+aiosqlite:///./study.db". With the STUDY_ prefix it is read from
 #         STUDY_DATABASE_URL. The engine, the migrations and the tests all read this value.
+
+# TODO 14 (auth): two more fields on Settings, read from the environment the same way.
+#         secret_key: text with no default and at least 32 characters, from STUDY_SECRET_KEY.
+#         Use Field(min_length=32) and leave out the default, so the app refuses to start
+#         without a key. access_token_minutes: a whole number of 1 or more, default 30, from
+#         STUDY_ACCESS_TOKEN_MINUTES. Read the auth lesson, sections 3 and 4.

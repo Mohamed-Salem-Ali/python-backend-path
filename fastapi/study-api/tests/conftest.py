@@ -19,6 +19,7 @@ from fastapi.testclient import TestClient
 PROJECT = Path(__file__).resolve().parents[1]
 TEST_DB_FILE = Path(tempfile.mkdtemp(prefix="study-api-tests-")) / "test.db"
 os.environ["STUDY_DATABASE_URL"] = f"sqlite+aiosqlite:///{TEST_DB_FILE.as_posix()}"
+os.environ["STUDY_SECRET_KEY"] = "test-only-secret-key-that-is-long-enough-for-hs256"
 
 from app.main import app  # noqa: E402  (imported after the variable above is set)
 

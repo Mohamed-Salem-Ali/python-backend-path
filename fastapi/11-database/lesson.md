@@ -10,7 +10,7 @@ By the end you can keep data in a database with async SQLAlchemy 2.0, write a mo
 pip install -r requirements.txt
 ```
 
-Run this module's tests with `pytest tests/test_database.py`. All 11 should pass when you finish, and `pytest` on its own runs all 36 tests.
+Run this module's tests with `pytest tests/test_database.py`. All 11 should pass when you finish. A bare `pytest` also runs the auth tests from the next module, which fail until you finish that module.
 
 **How to read the examples:** the examples use a made-up `notes` app. It is not part of the Study API.
 

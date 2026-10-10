@@ -14,3 +14,6 @@ app = FastAPI(title="Study API", version="0.1.0")
 
 # TODO 6: a GET route at "/health" that returns {"status": "ok"}. Use the @app.get decorator on a
 #         plain function. A health route tells a load balancer that the process is up.
+
+# TODO 22 (auth): include the auth router and the me router, as you did for the summaries
+#         router. Until you do, the /auth and /me routes do not exist.

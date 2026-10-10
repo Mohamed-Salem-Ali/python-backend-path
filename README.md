@@ -36,7 +36,7 @@ The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by
 |---|---|---|
 | 1–4 | [Python fundamentals](python/SYLLABUS.md) | All 15 modules ready. Module 12 (concurrency and async) is for week 10, before FastAPI |
 | 5–9 | [Django](django/SYLLABUS.md): models, views, admin, DRF, Celery, deployment | All 13 modules written (architecture, models, admin and forms, views, templates, DRF, middleware and signals, testing, caching and performance, background tasks, auth and security, deployment, and the capstone write-up) |
-| 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | In progress: 4 of 9 topics written (async Python, FastAPI basics, Pydantic, the database), with the Study API project |
+| 10–12 | [FastAPI](fastapi/SYLLABUS.md): async, Pydantic, SQLAlchemy, JWT, Docker | In progress: 6 of 9 topics written (async Python, FastAPI basics, Pydantic, the database, dependencies and auth), with the Study API project |
 
 ### Python modules
 | # | Module | Week | Status |

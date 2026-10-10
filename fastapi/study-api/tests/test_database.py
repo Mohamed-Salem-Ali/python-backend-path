@@ -16,6 +16,7 @@ from alembic import command
 from alembic.autogenerate import compare_metadata
 from alembic.config import Config
 from alembic.migration import MigrationContext
+from alembic.script import ScriptDirectory
 from app import models  # noqa: F401  (registers the models on Base.metadata)
 from app.config import get_settings
 from app.database import Base
@@ -28,6 +29,13 @@ PROJECT = Path(__file__).resolve().parents[1]
 
 def alembic_config():
     return Config(str(PROJECT / "alembic.ini"))
+
+
+def step_back_past_language():
+    """Downgrade to the revision before "add language", whichever migrations come after it."""
+    script = ScriptDirectory.from_config(alembic_config())
+    language = next(rev for rev in script.walk_revisions() if rev.doc == "add language")
+    command.downgrade(alembic_config(), language.down_revision)
 
 
 def fresh_database(tmp_path, monkeypatch):
@@ -69,7 +77,7 @@ def test_the_migrations_match_the_models(tmp_path, monkeypatch):
 def test_the_language_default_reaches_rows_written_before_the_column(tmp_path, monkeypatch):
     path = fresh_database(tmp_path, monkeypatch)
     command.upgrade(alembic_config(), "head")
-    command.downgrade(alembic_config(), "-1")
+    step_back_past_language()
     assert "language" not in {row[1] for row in run(path, "PRAGMA table_info(summaries)")}
     run(
         path,

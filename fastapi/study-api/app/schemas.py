@@ -28,3 +28,21 @@ class SummaryOut(BaseModel):
     id: int
     summary: str
     word_count: int
+
+
+# TODO 17 (auth): three shapes for the user routes. Read the auth lesson, section 4.
+#   UserIn: username (3 to 50 characters) and password (8 to 128 characters), with
+#     extra="forbid", as SummaryIn has. Use Field(...) for the limits.
+#   UserOut: id and username. Give it from_attributes=True, as SummaryOut has, so that a
+#     User row can be returned.
+#   Token: access_token (text) and token_type (text, default "bearer").
+class UserIn:  # TODO 17: subclass BaseModel and add the fields
+    pass
+
+
+class UserOut:  # TODO 17: subclass BaseModel and add the fields
+    pass
+
+
+class Token:  # TODO 17: subclass BaseModel and add the fields
+    pass

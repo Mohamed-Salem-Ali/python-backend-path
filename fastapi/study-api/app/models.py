@@ -17,3 +17,11 @@ class Summary:  # TODO 10: subclass Base, and set __tablename__ = "summaries".
     # Then, after section 5 of the lesson, add the language column:
     #   language    text, up to 8 characters, default "en" in the database too.
     pass
+
+
+class User:  # TODO 15: subclass Base, and set __tablename__ = "users". Add these columns:
+    #   id             int, the primary key
+    #   username       text, up to 50 characters, unique
+    #   password_hash  text, up to 255 characters
+    # Read the auth lesson, section 4. Then run the migration commands in that section.
+    pass

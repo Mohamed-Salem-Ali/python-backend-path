@@ -39,3 +39,7 @@ router = APIRouter(prefix="/summaries", tags=["summaries"])
 #         select(Summary), ordered by id, with offset and limit. Fetch: await session.get. Delete:
 #         get the row, await session.delete, then await session.commit. The lesson, section 3,
 #         shows each call. When no route uses app/store.py any more, delete that file.
+
+# TODO 21 (auth): the create route takes one more parameter: user: User | None =
+#         Depends(get_optional_user), from app.dependencies. The owner becomes the user's
+#         username, or "anonymous" when no user is signed in. Read the auth lesson, section 7.
