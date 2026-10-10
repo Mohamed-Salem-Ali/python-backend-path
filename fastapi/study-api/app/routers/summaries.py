@@ -31,3 +31,11 @@ router = APIRouter(prefix="/summaries", tags=["summaries"])
 # TODO 4: a DELETE route at "/{summary_id}". On success it answers 204 No Content and sends no
 #         body. If there is no such record, raise HTTPException with status_code 404 and the
 #         same detail.
+
+# TODO 11 (database): the four routes above keep their paths, status codes and response models,
+#         but they now use the database instead of app/store.py. Each route takes
+#         session: AsyncSession = Depends(get_session) and becomes async def. Create: session.add,
+#         await session.commit, then await session.refresh. List: await session.scalars with
+#         select(Summary), ordered by id, with offset and limit. Fetch: await session.get. Delete:
+#         get the row, await session.delete, then await session.commit. The lesson, section 3,
+#         shows each call. When no route uses app/store.py any more, delete that file.

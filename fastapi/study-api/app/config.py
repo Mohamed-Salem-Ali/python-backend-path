@@ -18,3 +18,8 @@ class Settings:  # TODO 7: subclass BaseSettings and add the field
 
 def get_settings():  # TODO 7: return Settings()
     raise NotImplementedError("TODO 7")
+
+
+# TODO 12 (database): add a second field to Settings: database_url, a text value with the default
+#         "sqlite+aiosqlite:///./study.db". With the STUDY_ prefix it is read from
+#         STUDY_DATABASE_URL. The engine, the migrations and the tests all read this value.

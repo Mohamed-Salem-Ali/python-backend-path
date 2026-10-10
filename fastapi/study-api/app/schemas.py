@@ -21,6 +21,9 @@ class SummaryIn(BaseModel):
     max_words: int = 50
 
 
+# TODO 13 (database): the routes now return database rows, not dicts. Give SummaryOut
+#         model_config = ConfigDict(from_attributes=True), so Pydantic reads the attributes of a
+#         row. Without it, a row is refused as a response.
 class SummaryOut(BaseModel):
     id: int
     summary: str

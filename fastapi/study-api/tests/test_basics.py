@@ -6,8 +6,6 @@ One test passes before you start: FastAPI serves its /docs page by itself. It is
 docs stay on when you change the routes.
 """
 
-from app import store
-
 
 def create(client, text="one two three four five", max_words=3):
     return client.post("/summaries", json={"text": text, "max_words": max_words})
@@ -31,10 +29,11 @@ def test_short_text_is_not_cut_and_gets_no_dots(client):
     assert response.json()["word_count"] == 2
 
 
-def test_the_response_hides_the_owner(client):
+def test_the_response_hides_the_owner(client, db_query):
     body = create(client).json()
     assert set(body) == {"id", "summary", "word_count"}
-    assert store.SUMMARIES[1]["owner"] == "anonymous"  # the store keeps it; the reply must not
+    # The table keeps the owner; the reply must not show it.
+    assert db_query("SELECT owner FROM summaries WHERE id = ?", (1,)) == [("anonymous",)]
 
 
 def test_a_saved_summary_can_be_fetched_and_hides_the_owner(client):
