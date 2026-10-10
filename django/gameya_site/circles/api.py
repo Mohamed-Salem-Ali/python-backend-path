@@ -32,3 +32,19 @@ from rest_framework.response import Response  # noqa: F401
 #          Read it with self.request.query_params.get("gameya"). Convert it with int() inside
 #          try/except ValueError. Do not use isdigit(): it accepts characters, such as "²",
 #          that int() rejects.
+
+# Module 11: ownership. An organiser changes their own gameya and its members.
+# TODO 40: a permission class IsStaffOrOrganiser(BasePermission), used in place of the module 06
+#          permission on both viewsets. Anyone may read. Creating a gameya or a member needs a
+#          logged-in staff user. Changing or deleting needs staff, or the organiser of that gameya.
+#          has_permission() is the first check: it sees the request and the view, so use
+#          view.action to tell a create from an update. has_object_permission() is the second
+#          check, and it sees the object: a Gameya, or a Member through its gameya field.
+#          Read the lesson, section 4.
+#          Also add JWTAuthentication (from rest_framework_simplejwt.authentication) to the
+#          authentication_classes of both viewsets, after TokenAuthentication. Section 3 explains.
+# TODO 41: MemberViewSet.perform_update(self, serializer). A member may move to another gameya
+#          only when the user is staff, or organises the new gameya. The new gameya is in
+#          serializer.validated_data under "gameya", and only when the request sent one. Raise
+#          PermissionDenied (from rest_framework.exceptions) when the move is not allowed.
+#          Otherwise call serializer.save(). Checking the member alone is not enough: section 4.

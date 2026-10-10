@@ -107,3 +107,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #   EMAIL_BACKEND: the console backend, so emails print in the terminal during local work. Django
 #                      sends real mail by default, which fails here without a mail server. The
 #                      tests collect emails in memory instead, so they do not use this setting.
+
+# TODO 42 (module 11): the JWT settings. Add a dictionary named SIMPLE_JWT, with three entries:
+#   ACCESS_TOKEN_LIFETIME: 15 minutes, as a timedelta. Access tokens are short-lived on purpose.
+#   REFRESH_TOKEN_LIFETIME: 7 days.
+#   AUTH_HEADER_TYPES: ("Bearer",), the word before the token in the Authorization header.
+#          Import timedelta from datetime at the top of this file.
+# TODO 43 (module 11): production settings, switched on by the environment variable
+#          DJANGO_PRODUCTION set to "1". Section 7 of the lesson explains each one.
+#   1. PRODUCTION = os.environ.get("DJANGO_PRODUCTION") == "1", above SECRET_KEY.
+#   2. SECRET_KEY: production has no fallback. Without DJANGO_SECRET_KEY, raise
+#      ImproperlyConfigured (from django.core.exceptions), with a message that names the variable.
+#      Keep a development fallback for local work, at least 32 characters long, because the JWT
+#      signature uses this key.
+#   3. DEBUG: never on in production.
+#   4. When PRODUCTION is set: SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https"),
+#      SECURE_SSL_REDIRECT, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_HSTS_SECONDS = 3600,
+#      and SECURE_HSTS_INCLUDE_SUBDOMAINS and SECURE_HSTS_PRELOAD, both True.
+#   Then run `python manage.py check --deploy` with DJANGO_PRODUCTION=1 and a long key.

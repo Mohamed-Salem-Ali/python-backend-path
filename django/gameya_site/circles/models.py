@@ -93,3 +93,12 @@ class PayoutSlot(models.Model):
 #   summary     text, up to 200 characters: str() of that row, taken when the event happens
 #   created_at  set automatically when the row is created
 # Meta: order by id. Then run `python manage.py makemigrations circles` and `migrate`.
+
+
+# Module 11: ownership.
+# TODO 39: add a field to Gameya: organiser, a ForeignKey to settings.AUTH_USER_MODEL. Use
+#          null=True and blank=True, because a gameya can exist before it has an organiser;
+#          on_delete=models.SET_NULL, so deleting the user keeps the gameya; and
+#          related_name="organised_gameyas". Import settings from django.conf at the top of this
+#          file, and put the field inside class Gameya, above its Meta. Then run
+#          `python manage.py makemigrations circles -n gameya_organiser` and `migrate`.

@@ -11,7 +11,7 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [config/](config/) | Settings, root URL routes, WSGI and ASGI entry points | Ready |
 | [config/celery.py](config/celery.py) | The Celery app that runs background tasks | Stub (module 10) |
 | [circles/](circles/) | The app that holds the Gameya domain | Scaffold |
-| [circles/models.py](circles/models.py) | Four models: `Gameya`, `Member`, `Payment`, `PayoutSlot`. Module 07 adds `AuditEntry` | Stub (module 02) |
+| [circles/models.py](circles/models.py) | Four models: `Gameya`, `Member`, `Payment`, `PayoutSlot`. Module 07 adds `AuditEntry`, and module 11 adds `organiser` to `Gameya` | Stub (module 02) |
 | [circles/queries.py](circles/queries.py) | Reusable query functions | Stub (module 02) |
 | [circles/views.py](circles/views.py) | Function views (health, hello, add, about) and class-based views (list, detail, payments) | TODO comments only (modules 01, 04 and 05) |
 | [circles/urls.py](circles/urls.py) | App URL routes | TODO comments only (modules 01, 04, 05 and 06) |
@@ -47,6 +47,7 @@ The Django project for **Gameya**, the rotating-savings tracker. You build it on
 | [test_pytest_suite.py](circles/tests/test_pytest_suite.py) | pytest tests: parametrized rules, factories, fixtures, the client and query counts. Run with `pytest` | 08 |
 | [test_performance.py](circles/tests/test_performance.py) | pytest tests: query counts for the summary, the cache, and its invalidation. Run with `pytest` | 09 |
 | [test_tasks.py](circles/tests/test_tasks.py) | pytest tests: the Celery app and schedule, the week rule, the report task and its retries. Run with `pytest` | 10 |
+| [test_security.py](circles/tests/test_security.py) | pytest tests: ownership, JWT, CSRF, escaping and production settings. Run with `pytest` | 11 |
 
 Run them from this folder, after the [week 5 setup](../WEEK-5.md#setup-day-1-15-minutes):
 
@@ -62,4 +63,4 @@ Do not edit the `test_*.py` files. Most tests fail until you build the feature t
 pytest circles/tests/test_pytest_suite.py
 ```
 
-Modules 09 and 10 are pytest files too: `pytest circles/tests/test_performance.py` and `pytest circles/tests/test_tasks.py`.
+Modules 09, 10 and 11 are pytest files too: `pytest circles/tests/test_performance.py`, `pytest circles/tests/test_tasks.py` and `pytest circles/tests/test_security.py`.

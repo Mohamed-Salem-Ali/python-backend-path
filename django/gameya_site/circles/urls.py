@@ -25,4 +25,10 @@ urlpatterns = [
     #          obtain_auth_token, name="api-token").
     #          Do this last, after TODO 20 and 21. register() needs both viewsets to exist.
     #          Until then the whole project fails to start, and every module's tests fail with it.
+    # Module 11: JWT. Import TokenObtainPairView and TokenRefreshView from
+    # rest_framework_simplejwt.views.
+    # TODO 42: path("api/jwt/token/", TokenObtainPairView.as_view(), name="api-jwt-token") and
+    #          path("api/jwt/refresh/", TokenRefreshView.as_view(), name="api-jwt-refresh").
+    #          The first takes a username and password and returns an access and a refresh
+    #          token. The second turns a refresh token into a new access token.
 ]
