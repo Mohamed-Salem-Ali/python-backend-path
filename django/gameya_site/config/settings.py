@@ -89,3 +89,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #          backend (LocMemCache), a LOCATION name of your choice, and a TIMEOUT of 300 seconds.
 #          Django uses LocMemCache even without this setting. Writing it down makes the choice
 #          and the timeout visible. A production setup can switch the backend to Redis.
+
+# TODO 37 (module 10): the Celery settings. Give each one a value, in this order:
+#   CELERY_BROKER_URL: the broker's address, read from the environment variable
+#                      CELERY_BROKER_URL, with "memory://" as the default. The lesson explains
+#                      what a broker is and why memory is fine for learning.
+#   CELERY_TASK_ALWAYS_EAGER: True unless the environment variable CELERY_EAGER is set to "0".
+#                      Eager tasks run in the same process, right away. Tests need this.
+#   CELERY_TASK_EAGER_PROPAGATES: False. An eager task that fails does not raise at once: its
+#                      .get() raises the error instead. With True, a retry escapes as a Retry
+#                      signal before it runs, so the retry tests could not see it.
+#   CELERY_BEAT_SCHEDULE: one entry that runs circles.tasks.queue_unpaid_reports every day at
+#                      08:00. Use celery.schedules.crontab for the time. The key of the entry
+#                      is a name you choose.
+#   GAMEYA_ORGANISER_EMAIL: the address that receives the reports, read from the environment
+#                      variable GAMEYA_ORGANISER_EMAIL, with "organiser@example.com" as the default.
+#   EMAIL_BACKEND: the console backend, so emails print in the terminal during local work. Django
+#                      sends real mail by default, which fails here without a mail server. The
+#                      tests collect emails in memory instead, so they do not use this setting.
