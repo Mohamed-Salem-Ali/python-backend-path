@@ -20,7 +20,7 @@ Start with [WEEK-5.md](WEEK-5.md). The code lives in [`gameya_site/`](gameya_sit
 | 10 | [10-background-tasks](10-background-tasks/) | Celery in eager mode | 9 | Ready | [lesson](10-background-tasks/lesson.md), [checks](gameya_site/circles/tests/test_tasks.py) |
 | 11 | [11-auth-security](11-auth-security/) | Auth and security | 9 | Ready | [lesson](11-auth-security/lesson.md), [checks](gameya_site/circles/tests/test_security.py), [security review](11-auth-security/security-review.md) |
 | 12 | [12-deployment](12-deployment/) | Deployment | 9 | Ready | [lesson](12-deployment/lesson.md), [checks](gameya_site/circles/tests/test_deployment.py), [deploy checklist](12-deployment/deploy-checklist.md) |
-| 13 | `13-capstone` | Gameya portfolio project | 9 | Planned | None yet |
+| 13 | [13-capstone](13-capstone/) | Gameya portfolio project (write-up) | 9 | Ready | [lesson](13-capstone/lesson.md), [case study template](13-capstone/case-study-template.md) |
 
 Module folders are created as each lesson is written. Until then, the syllabus is the source for each topic.
 
