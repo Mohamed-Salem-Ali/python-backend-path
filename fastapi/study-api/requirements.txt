@@ -8,4 +8,5 @@ alembic>=1.20,<2
 pwdlib[argon2]>=0.3,<1
 pyjwt>=2.15,<3
 python-multipart>=0.0.32,<1
+anyio>=4.15,<5
 pytest>=9.1,<10

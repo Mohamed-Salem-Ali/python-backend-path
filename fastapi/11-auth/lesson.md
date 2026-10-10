@@ -127,8 +127,9 @@ from fastapi.security import OAuth2PasswordBearer
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")
 
 
-async def get_current_user(token: str = Depends(oauth2_scheme), session=Depends(get_session)):
-    ...  # read the user id from the token, load the user, or raise a 401
+async def get_current_user(
+    token: str = Depends(oauth2_scheme), session=Depends(get_session)
+): ...  # read the user id from the token, load the user, or raise a 401
 ```
 
 Any route that takes `user: User = Depends(get_current_user)` is then protected, and it receives the user it needs. The function bodies in `app/security.py` and `app/dependencies.py` are yours to write (TODOs 16 and 18).
@@ -145,8 +146,7 @@ Two status codes are easy to mix up:
 
 ```python
 @app.get("/me/summaries")
-async def my_summaries(user = Depends(get_current_user), session = Depends(get_session)):
-    ...
+async def my_summaries(user=Depends(get_current_user), session=Depends(get_session)): ...
 ```
 
 Here `get_current_user` opens the session to load the user, and the route uses the same session for its query. Only one session is created. Pass `use_cache=False` to `Depends` if a dependency has to run again within the same request. That is rare.

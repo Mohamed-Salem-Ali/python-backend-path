@@ -46,3 +46,15 @@ class UserOut:  # TODO 17: subclass BaseModel and add the fields
 
 class Token:  # TODO 17: subclass BaseModel and add the fields
     pass
+
+
+# TODO 25 (background work): two shapes. Read the lesson, section 2.
+#   QueuedOut: status (text, default "queued") and summary_id (a whole number).
+#   FlashcardOut: id, front and back, with from_attributes=True, so a Flashcard row can be
+#     returned.
+class QueuedOut:  # TODO 25: subclass BaseModel and add the fields
+    pass
+
+
+class FlashcardOut:  # TODO 25: subclass BaseModel and add the fields
+    pass

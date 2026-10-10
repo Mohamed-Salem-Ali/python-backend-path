@@ -23,3 +23,9 @@ class Base:  # TODO 9: make Base a subclass of DeclarativeBase. Every table mode
 #         AsyncIterator[AsyncSession].
 async def get_session():
     raise NotImplementedError("TODO 9")
+
+
+# TODO 23 (background work): SQLite ignores foreign keys unless each connection switches them on.
+#         Add a listener for the "connect" event of engine.sync_engine (from sqlalchemy import
+#         event). It runs cursor.execute("PRAGMA foreign_keys=ON") on each new connection. Only
+#         do this when the engine is SQLite. Read the background work lesson, section 4.

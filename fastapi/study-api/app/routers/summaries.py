@@ -43,3 +43,13 @@ router = APIRouter(prefix="/summaries", tags=["summaries"])
 # TODO 21 (auth): the create route takes one more parameter: user: User | None =
 #         Depends(get_optional_user), from app.dependencies. The owner becomes the user's
 #         username, or "anonymous" when no user is signed in. Read the auth lesson, section 7.
+
+# TODO 27 (background work): two routes for a summary's flashcards.
+#         Read the lesson, sections 2 and 3.
+#   POST "/{summary_id}/flashcards" answers 202 Accepted with a QueuedOut. It takes
+#   background: BackgroundTasks, maker from Depends(get_flashcard_maker), and the session. A
+#   missing summary is a 404 with the detail "summary not found". Otherwise add write_flashcards
+#   to background, with the summary id and the maker, and return QueuedOut. The route does not
+#   wait for the job.
+#   GET "/{summary_id}/flashcards" returns a list of FlashcardOut for the summary, ordered by
+#   id. A missing summary is a 404 with the same detail.
