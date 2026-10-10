@@ -60,9 +60,10 @@ A foreign key in `list_display` shows the related object's `__str__`. A search f
 An **inline** shows a model's rows on its parent's page. Here, an author's page can list and edit their books without a trip to the book list:
 
 ```python
-class BookInline(admin.TabularInline):   # StackedInline stacks each row vertically
+class BookInline(admin.TabularInline):  # StackedInline stacks each row vertically
     model = Book
-    extra = 0                             # no blank rows for adding (Django's default is 3)
+    extra = 0  # no blank rows for adding (Django's default is 3)
+
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
@@ -91,9 +92,9 @@ A form given data with `data=` is **bound**. Call `is_valid()` on it, then read 
 ```python
 form = ContactForm(data={"name": "  Sara ", "email": "sara@example.com", "message": "Hi"})
 if form.is_valid():
-    form.cleaned_data["name"]     # "Sara": parsed and stripped
+    form.cleaned_data["name"]  # "Sara": parsed and stripped
 else:
-    form.errors                   # a dict: field name -> list of messages
+    form.errors  # a dict: field name -> list of messages
 ```
 
 ## 7. A plain form: `forms.Form`
@@ -102,8 +103,9 @@ Use `forms.Form` when the data does not map to one model, for example a contact 
 ```python
 from django import forms
 
+
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length=80)        # required, stripped of spaces by default
+    name = forms.CharField(max_length=80)  # required, stripped of spaces by default
     email = forms.EmailField()
     message = forms.CharField(max_length=500)
 ```
@@ -113,11 +115,12 @@ Field classes do the parsing and the common checks. `CharField` strips spaces, s
 ```python
 class ContactForm(forms.Form):
     ...
+
     def clean_name(self):
         name = self.cleaned_data["name"]
         if any(character.isdigit() for character in name):
             raise forms.ValidationError("A name cannot contain digits.")
-        return name                               # always return the cleaned value
+        return name  # always return the cleaned value
 ```
 
 ## 8. A form from a model: `ModelForm`
@@ -135,7 +138,7 @@ Its `is_valid()` also runs the **model's** checks: the field types and `max_leng
 ```python
 form = BookForm(data=request_data)
 if form.is_valid():
-    book = form.save()           # creates the Book row
+    book = form.save()  # creates the Book row
 ```
 
 Django's admin builds a `ModelForm` for every model it shows. So the admin runs the same checks, and shows the errors on the page instead of crashing. The admin uses a default `ModelForm` unless you set `form = YourForm` on its `ModelAdmin`.
@@ -175,6 +178,7 @@ And the model's `clean()` for the same rule must survive a missing value, becaus
 ```python
 class Reservation(models.Model):
     ...
+
     def clean(self):
         # Guard first: the form may call this with a missing date.
         if self.check_in and self.check_out and self.check_out <= self.check_in:
@@ -185,8 +189,8 @@ class Reservation(models.Model):
 Templates (module 05) loop over the errors. Here is the data you have to work with, for the booking form above:
 
 ```python
-form.errors                  # {"check_out": ["Check-out must be after check-in."]}
-form.non_field_errors()      # errors that are not tied to one field
+form.errors  # {"check_out": ["Check-out must be after check-in."]}
+form.non_field_errors()  # errors that are not tied to one field
 form.has_error("check_out")  # True
 ```
 

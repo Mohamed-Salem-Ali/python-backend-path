@@ -17,8 +17,10 @@ class Book(models.Model):
     title = models.CharField(max_length=120)
     published_on = models.DateField()
 
+
 class Reader(models.Model):
     name = models.CharField(max_length=80)
+
 
 class Review(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="reviews")
@@ -45,6 +47,7 @@ A `ModelSerializer` reads the model and builds fields for it. List the fields yo
 
 ```python
 from rest_framework import serializers
+
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
@@ -88,9 +91,9 @@ Then the view checks the data and reads the result:
 ```python
 serializer = BookSerializer(data=request.data)
 if serializer.is_valid():
-    serializer.save()                 # creates the Book
+    serializer.save()  # creates the Book
 else:
-    serializer.errors                 # {"title": ["..."]}
+    serializer.errors  # {"title": ["..."]}
 ```
 
 The model's constraints apply too. A `UniqueConstraint` covering several fields is checked by DRF, and a duplicate comes back as a 400, not a 500. For this to happen, every field of the constraint must be a writable field of the serializer. If one is read-only, DRF skips the check and the database raises an error instead. Keep the constraint's fields writable.
@@ -100,6 +103,7 @@ A `ModelViewSet` provides `list`, `retrieve`, `create`, `update`, `partial_updat
 
 ```python
 from rest_framework import viewsets
+
 
 class ReaderViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Reader.objects.order_by("name")
@@ -134,12 +138,13 @@ The router creates the names `reader-list` (for `/library/readers/`) and `reader
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
+
 class BookViewSet(viewsets.ModelViewSet):
     ...
 
     @action(detail=True, methods=["get"])
     def readers(self, request, pk=None):
-        book = self.get_object()          # looks up the book, and returns 404 if missing
+        book = self.get_object()  # looks up the book, and returns 404 if missing
         readers = Reader.objects.filter(reviews__book=book).distinct()
         return Response(ReaderSerializer(readers, many=True).data)
 ```
@@ -158,13 +163,14 @@ The built-in view `obtain_auth_token` trades a username and password for a token
 ```python
 from rest_framework.authtoken.views import obtain_auth_token
 
-path("login/", obtain_auth_token, name="login"),
+(path("login/", obtain_auth_token, name="login"),)
 ```
 
 A wrong password gets a 400, not a token. Set the authentication classes on the viewset, so you know exactly what is accepted:
 
 ```python
 from rest_framework.authentication import TokenAuthentication
+
 
 class ReaderViewSet(viewsets.ReadOnlyModelViewSet):
     authentication_classes = [TokenAuthentication]
@@ -178,6 +184,7 @@ A permission class has one job: say yes or no for this request. Subclass `BasePe
 
 ```python
 from rest_framework.permissions import SAFE_METHODS, BasePermission
+
 
 class ReadOnly(BasePermission):
     def has_permission(self, request, view):
@@ -196,8 +203,10 @@ A list of thousands of rows should not go out in one response. `PageNumberPagina
 ```python
 from rest_framework.pagination import PageNumberPagination
 
+
 class FivePerPage(PageNumberPagination):
     page_size = 5
+
 
 class ReviewViewSet(viewsets.ModelViewSet):
     pagination_class = FivePerPage
@@ -211,9 +220,10 @@ The response has `count`, `next`, `previous` and `results`. The client asks for 
 ```python
 from rest_framework import filters
 
+
 class ReviewViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ["stars"]          # ?ordering=-stars
+    ordering_fields = ["stars"]  # ?ordering=-stars
 ```
 
 If `ordering_fields` is not set, DRF allows the readable serializer fields. Set it when you want to limit what a client can sort by.
@@ -222,6 +232,7 @@ For a parameter that no built-in tool handles, read it in `get_queryset()`. This
 
 ```python
 from rest_framework.exceptions import ValidationError
+
 
 class ReviewViewSet(viewsets.ModelViewSet):
     def get_queryset(self):

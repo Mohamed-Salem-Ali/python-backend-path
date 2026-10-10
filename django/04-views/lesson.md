@@ -11,8 +11,10 @@ class Book(models.Model):
     title = models.CharField(max_length=120)
     published_on = models.DateField()
 
+
 class Reader(models.Model):
     name = models.CharField(max_length=80)
+
 
 class Review(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="reviews")
@@ -26,7 +28,8 @@ A view is any callable that receives an `HttpRequest` and returns an `HttpRespon
 ```python
 from django.http import JsonResponse
 
-def health(request):                  # a function view
+
+def health(request):  # a function view
     return JsonResponse({"status": "ok"})
 ```
 
@@ -48,6 +51,7 @@ Neither is "better". A class groups the GET and POST logic of one resource in on
 from django.http import JsonResponse
 from django.views import View
 
+
 class BookList(View):
     def get(self, request):
         return JsonResponse([{"title": "Dune"}], safe=False)
@@ -58,14 +62,14 @@ class BookList(View):
 In `urls.py`, a class-based view is connected with `.as_view()`:
 
 ```python
-path("books/", views.BookList.as_view(), name="book_list"),
+(path("books/", views.BookList.as_view(), name="book_list"),)
 ```
 
 URL parts such as `<int:pk>` are passed to the method as keyword arguments:
 
 ```python
 class BookReviews(View):
-    def get(self, request, pk):          # pk comes from the URL
+    def get(self, request, pk):  # pk comes from the URL
         ...
 ```
 
@@ -95,11 +99,12 @@ A generic view does the common work for you. `DetailView` looks up one object us
 from django.http import JsonResponse
 from django.views.generic import DetailView
 
+
 class BookDetail(DetailView):
     model = Book
 
     def render_to_response(self, context, **response_kwargs):
-        book = self.object                 # DetailView has already looked it up
+        book = self.object  # DetailView has already looked it up
         return JsonResponse({"id": book.pk, "title": book.title})
 ```
 
@@ -112,6 +117,7 @@ In a plain `View`, do the lookup with `get_object_or_404`. It returns the object
 
 ```python
 from django.shortcuts import get_object_or_404
+
 
 class BookReviews(View):
     def get(self, request, pk):
@@ -138,8 +144,8 @@ if not form.is_valid():
 When the data is valid, save and return 201:
 
 ```python
-review = form.save(commit=False)     # build the Review, but do not save it yet
-review.book = book                   # the form does not know the book; the URL does
+review = form.save(commit=False)  # build the Review, but do not save it yet
+review.book = book  # the form does not know the book; the URL does
 review.save()
 return JsonResponse({"id": review.pk, "stars": review.stars}, status=201)
 ```

@@ -11,6 +11,7 @@ class Book(models.Model):
     title = models.CharField(max_length=120)
     published_on = models.DateField()
 
+
 class Review(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="reviews")
     stars = models.PositiveSmallIntegerField()
@@ -21,6 +22,7 @@ A view decides which data a page needs. A template decides how to show it. Keep 
 
 ```python
 from django.shortcuts import render
+
 
 def book_list(request):
     books = Book.objects.order_by("title")
@@ -144,10 +146,12 @@ A generic view knows its template and its context. You can set them on the class
 ```python
 from django.views.generic import DetailView, ListView
 
+
 class BookList(ListView):
     model = Book
-    template_name = "library/book_list.html"       # the page to render
-    context_object_name = "books"                   # the name the template uses
+    template_name = "library/book_list.html"  # the page to render
+    context_object_name = "books"  # the name the template uses
+
 
 class BookDetail(DetailView):
     model = Book

@@ -22,15 +22,16 @@ Django creates one instance when the server starts. The instance keeps a referen
 ```python
 import time
 
+
 class TimingMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        started = time.perf_counter()        # the request phase: before the view
+        started = time.perf_counter()  # the request phase: before the view
         response = self.get_response(request)
         elapsed_ms = (time.perf_counter() - started) * 1000
-        response["X-Response-Time-Ms"] = f"{elapsed_ms:.1f}"   # the response phase
+        response["X-Response-Time-Ms"] = f"{elapsed_ms:.1f}"  # the response phase
         return response
 ```
 
@@ -42,6 +43,7 @@ A middleware does not have to call `get_response`. If it returns a response itse
 ```python
 from django.conf import settings
 from django.http import HttpResponse
+
 
 class StocktakeMiddleware:
     def __init__(self, get_response):
@@ -79,6 +81,7 @@ from django.dispatch import receiver
 
 logger = logging.getLogger(__name__)
 
+
 @receiver(post_save, sender=Review)
 def log_new_review(sender, instance, created, **kwargs):
     if created:
@@ -92,6 +95,7 @@ Defining a receiver is not enough. The module that holds it must be imported whe
 
 ```python
 from django.apps import AppConfig
+
 
 class LibraryConfig(AppConfig):
     name = "library"
@@ -138,8 +142,10 @@ Test middleware in two ways. Through the client, the test sees the header on a r
 from django.http import HttpResponse
 from django.test import RequestFactory
 
+
 def view(request):
     return HttpResponse("ok")
+
 
 response = TimingMiddleware(view)(RequestFactory().get("/"))
 assert "X-Response-Time-Ms" in response
