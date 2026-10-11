@@ -10,7 +10,7 @@ Start with the [syllabus](SYLLABUS.md). The week-by-week outline is in [the 12-w
 |---|---|---|---|
 | 10 | Async Python, FastAPI basics, Pydantic v2 | In progress: [async Python](../python/12-concurrency-async/lesson.md), [FastAPI basics](10-basics/lesson.md) and [Pydantic](10-pydantic/lesson.md) are written. The database is next | Python module 12 |
 | 11 | Async SQLAlchemy and Alembic, dependency injection, JWT auth | Written: [the database](11-database/lesson.md), then [dependencies and auth](11-auth/lesson.md) | Week 10 |
-| 12 | Background work, async testing, Docker, deployment | In progress: [background work and testing](12-background/lesson.md) is written. Docker and deployment are next | Week 11 |
+| 12 | Background work, async testing, Docker, deployment | Written: [background work and testing](12-background/lesson.md), then [Docker and deployment](12-docker/lesson.md). The Django comparison note is next | Week 11 |
 
 The syllabus lists nine topics across these three weeks. Lesson folders are created when each lesson is written.
 
@@ -24,4 +24,5 @@ The syllabus lists nine topics across these three weeks. Lesson folders are crea
 | [11-database/](11-database/) | Lesson: the async engine and sessions, models, Alembic migrations, and testing against a database |
 | [11-auth/](11-auth/) | Lesson: dependencies, password hashing, JWT tokens, protected routes, and routes that take an optional user |
 | [12-background/](12-background/) | Lesson: `BackgroundTasks`, a job with its own session, foreign-key cascades, dependency overrides, and async tests |
+| [12-docker/](12-docker/) | Lesson, deploy checklist and case-study template: the image, configuration from the environment, volumes, health checks, and deploying |
 | [study-api/](study-api/) | The project: the Study API, with its tests |

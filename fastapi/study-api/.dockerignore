@@ -1,0 +1,4 @@
+# Files the build must not copy into the image. Module 12 (Docker): TODO 29.
+# Add one pattern per line (section 2 of the Docker lesson). Cover:
+#   the virtual environment folders, __pycache__, pytest's cache, the .git folder,
+#   every .env file (secrets), the local SQLite database files, and the tests folder.
