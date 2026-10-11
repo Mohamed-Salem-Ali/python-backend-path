@@ -54,7 +54,7 @@ On a 2 h day: do Learn + Wrap-up. On a 5 h day: add a second Build block, never 
 ## Running through all weeks
 - 1 coding challenge a day (Drill block), from [drills.md](drills.md) (easy ones first).
 - 2–3 interview questions each Day 6, with answers in your own words.
-- A 5-minute weekly reflection.
+- A 5-minute weekly reflection, from [weekly-reflection.md](weekly-reflection.md).
 - Test first, then build: from week 4 on, every project gets tests as you go.
 
 ## Freelance and portfolio tie-in
