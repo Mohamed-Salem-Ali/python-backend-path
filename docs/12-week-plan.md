@@ -11,7 +11,7 @@ Started: 2026-10-07 (week 1). The module list is in the [README](../README.md); 
 |---|---|---|
 | Learn | 1–1.5 h | One concept from the module: read, then type every example yourself (no copy-paste) |
 | Build | 1–1.5 h | Apply it in the week's project; commit small |
-| Drill | 20 min | One coding challenge (LeetCode or HackerRank (pick easy ones)) |
+| Drill | 20 min | One coding challenge from [drills.md](drills.md) (HackerRank, easy ones) |
 | Wrap-up | 10 min | Write 3 lines: what I learned, what confused me, tomorrow's step |
 
 On a 2 h day: do Learn + Wrap-up. On a 5 h day: add a second Build block, never skip the wrap-up.
@@ -52,7 +52,7 @@ On a 2 h day: do Learn + Wrap-up. On a 5 h day: add a second Build block, never 
 **Checkpoint end of week 12:** two deployed projects, a README for each, and a blog-style "Django vs FastAPI, what I learned" note for your portfolio.
 
 ## Running through all weeks
-- 1 coding challenge a day (Drill block), from LeetCode or HackerRank (easy ones first).
+- 1 coding challenge a day (Drill block), from [drills.md](drills.md) (easy ones first).
 - 2–3 interview questions each Day 6, with answers in your own words.
 - A 5-minute weekly reflection.
 - Test first, then build: from week 4 on, every project gets tests as you go.
