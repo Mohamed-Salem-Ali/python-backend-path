@@ -93,3 +93,15 @@ Section 7 of [the Docker lesson](../12-docker/lesson.md) lists the checks. The c
 ## Tests
 
 `pytest` runs all six test files, 88 tests in all. Until you fill in the TODOs, the tests fail: the routes, the rules and settings, the database, the sign-in, the background work, and the image. Every test needs the migrated database, so until the migrations exist, every test reports an error at setup, not a failed assertion. Once the database is in place, three tests pass before you write the code: the default of 50 words, which the basics already set; the flashcard cascade check, once the flashcards migration exists; and the check that no secret is in the image, which holds until you add one. The auth tests need the users migration (the auth lesson, section 4). The background work tests need the flashcards migration (the background work lesson, section 4). The deployment tests read the Dockerfile as text, so they need no Docker.
+
+## What I learned
+
+The project uses the ideas below, and each one is taught in a lesson in this course. When you finish, rewrite this list in your own words: what surprised you, and what you would change.
+
+- Routes, path and query parameters, response models and status codes: [basics](../10-basics/lesson.md)
+- Validation with Pydantic, and settings read from the environment: [Pydantic](../10-pydantic/lesson.md)
+- Async SQLAlchemy and Alembic migrations: [database](../11-database/lesson.md)
+- Dependencies, password hashing, signed tokens and protected routes: [auth](../11-auth/lesson.md)
+- Background work, cascading deletes in SQLite, async tests and dependency overrides: [background work](../12-background/lesson.md)
+- A Dockerfile, a non-root user, health checks and volumes: [Docker](../12-docker/lesson.md)
+- Where Django and FastAPI differ for an app like this one: [comparison](../12-comparison/comparison.md)

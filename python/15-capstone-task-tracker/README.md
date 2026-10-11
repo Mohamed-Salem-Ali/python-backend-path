@@ -2,6 +2,10 @@
 
 Everything from the Python phase in one program: data modelling, validation, files, errors, a command line, type hints, tests and packaging. When this passes, you have finished the Python track.
 
+## Setup and run
+
+Install the project into a virtual environment, from this folder, then try the command. The examples show what the finished `tasks` command does. Your tasks are saved to `tasks.json` in the folder you run it from, so do not commit that file.
+
 ```bash
 pip install -e ".[dev]"        # from this folder, inside a virtual environment
 tasks add "Buy milk" --priority high --due 2026-10-20
@@ -44,7 +48,7 @@ Global options (before the command): `--file PATH` (default `tasks.json`) and `-
 | Bad title or due date | `2` | `error:` and the word `title` or `due` |
 | Bad priority or unknown option | `2` | argparse's usage message |
 
-## The acceptance tests are your target
+## Tests
 
 `tests/test_acceptance.py` already contains the tests for everything above. They use only the command line, so how you build the inside is your design. Run them from this folder:
 
@@ -81,3 +85,14 @@ Do not edit `test_acceptance.py`.
 - Write to a temporary file and rename it, so a crash never leaves a half-written tasks file.
 - A `--json` flag for `list`.
 - Record the project in your own README with a short demo.
+
+## What I learned
+
+The project uses the ideas below, and each one is taught in a lesson in this course. When you finish, rewrite this list in your own words, as the stretch goal above asks.
+
+- A dataclass for the task model, with checks when it is created: [classes](../07-oop/lesson.md)
+- Reading and writing JSON files, and `argparse` sub-commands: [modules and the standard library](../06-modules-packages-stdlib/lesson.md)
+- Exceptions, and keeping the mapping to exit codes in one place: [error handling](../08-error-handling/lesson.md)
+- Type hints, checked with mypy: [typing](../11-typing/lesson.md)
+- Tests with pytest: [testing](../13-testing/lesson.md)
+- A package with a command, installed with `pip install -e`: [packaging](../14-packaging/lesson.md)

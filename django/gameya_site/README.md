@@ -2,6 +2,18 @@
 
 The Django project for **Gameya**, the rotating-savings tracker. You build it one module at a time. The app files start as stubs with `TODO`s, and the tests describe what each one must do.
 
+## Setup and run
+
+Create a virtual environment and install Django first. The [week 5 setup](../WEEK-5.md#setup-day-1-15-minutes) walks you through both. Then, from this folder:
+
+```bash
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+Open `http://127.0.0.1:8000/admin/` to see the Django admin login page. `migrate` creates `db.sqlite3` in this folder, which git ignores. Local runs need no environment variables: the settings fall back to a development secret key, with `DEBUG` on. Modules 11 and 12 add the production settings, which read the secret key, the debug flag and `DATABASE_URL` from the environment.
+
 ## Layout
 
 | Path | What it is | State |
@@ -66,3 +78,21 @@ pytest circles/tests/test_pytest_suite.py
 ```
 
 Modules 09 to 12 are pytest files too: `pytest circles/tests/test_performance.py`, `pytest circles/tests/test_tasks.py`, `pytest circles/tests/test_security.py` and `pytest circles/tests/test_deployment.py`.
+
+## What I learned
+
+The project uses the ideas below, and each one is taught in a lesson in this course. When you finish, rewrite this list in your own words: what surprised you, and what you would change.
+
+- MTV, and the difference between a project and an app: [architecture](../01-architecture/lesson.md)
+- Models, migrations and QuerySets: [models and ORM](../02-models-orm/lesson.md)
+- The admin, and forms with validation: [admin and forms](../03-admin-forms/lesson.md)
+- Function and class-based views: [views](../04-views/lesson.md)
+- Templates, inheritance and static files: [templates](../05-templates/lesson.md)
+- Django REST framework: serializers, viewsets, permissions and pagination: [DRF](../06-drf/lesson.md)
+- Middleware and signals, used for an audit log: [middleware and signals](../07-middleware-signals/lesson.md)
+- Tests with pytest-django and factories: [testing](../08-testing/lesson.md)
+- Caching, and fixing N+1 queries with `select_related`: [caching and performance](../09-caching-performance/lesson.md)
+- Background tasks with Celery in eager mode: [background tasks](../10-background-tasks/lesson.md)
+- Auth and security, including ownership checks: [auth and security](../11-auth-security/lesson.md)
+- Deployment, with production settings: [deployment](../12-deployment/lesson.md)
+- The portfolio write-up: [capstone](../13-capstone/lesson.md)
