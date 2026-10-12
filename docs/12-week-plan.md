@@ -58,7 +58,7 @@ On a 2 h day: do Learn + Wrap-up. On a 5 h day: add a second Build block, never 
 - Test first, then build: from week 4 on, every project gets tests as you go.
 
 ## Freelance and portfolio tie-in
-- Week 9: add Gameya (Django) to the portfolio next to the Next.js version.
+- Week 9: add Gameya (Django) to the portfolio next to the Next.js version. The settings, decisions and known gaps are in [gameya-deployment-notes.md](gameya-deployment-notes.md).
 - Week 12: add the FastAPI project and the comparison note.
 - After week 12 (optional): a small client-style project, such as a booking system or an invoice tracker.
 
