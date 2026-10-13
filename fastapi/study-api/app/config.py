@@ -29,3 +29,14 @@ def get_settings():  # TODO 7: return Settings()
 #         Use Field(min_length=32) and leave out the default, so the app refuses to start
 #         without a key. access_token_minutes: a whole number of 1 or more, default 30, from
 #         STUDY_ACCESS_TOKEN_MINUTES. Read the auth lesson, sections 3 and 4.
+
+# TODO 30 (a real model and rate limits): five more fields, read the same way.
+#         ai_provider: Literal["stub", "gemini"], default "stub".
+#         ai_api_key: SecretStr | None, default None. SecretStr hides the value when the settings
+#           are printed or logged; read it with get_secret_value().
+#         ai_model: text, default "gemini-3.5-flash-lite".
+#         ai_timeout_seconds: a number above 0, default 20.
+#         rate_limit_per_minute: a whole number of 0 or more, default 10. 0 turns the limit off.
+#         Then a model_validator(mode="after") that raises ValueError with the message
+#         "STUDY_AI_API_KEY is required when STUDY_AI_PROVIDER is gemini" when the provider is
+#         gemini and there is no key. Read the lesson, section 1.

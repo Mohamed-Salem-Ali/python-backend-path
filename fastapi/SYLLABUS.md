@@ -4,7 +4,7 @@ Weeks 10–12 of the [12-week plan](../docs/12-week-plan.md). Prerequisites: the
 
 **Level target:** design, test, containerize and deploy an async API, and explain when FastAPI is the better choice than Django.
 
-**Project:** the [Study API](study-api/), an AI wrapper API with saved summaries, users and login, and flashcards made in the background. The "AI" is a stand-in function, so the course needs no API key; a real model call is in the advanced tier.
+**Project:** the [Study API](study-api/), an AI wrapper API with saved summaries, users and login, and flashcards made in the background. Through week 12 the "AI" is a stand-in function, so the course needs no API key. The bonus module puts a real model call behind the same dependency, and adds rate limits.
 
 ## Core track
 
@@ -19,6 +19,7 @@ Weeks 10–12 of the [12-week plan](../docs/12-week-plan.md). Prerequisites: the
 | 12 | Background work | `BackgroundTasks`, and when to reach for a real queue |
 | 12 | Testing | async pytest, dependency overrides, a test database |
 | 12 | Docker and deployment | Dockerfile, environment config, deploy to a real host |
+| Bonus | [A real model and rate limits](13-ai-and-limits/lesson.md) | call a model's HTTP API safely, test it without the network, and limit how often one caller can use a route |
 
 ## Exit exam: "I know FastAPI"
 - [ ] Explain what happens when an async endpoint calls a blocking function, and how to fix it
@@ -30,8 +31,8 @@ Weeks 10–12 of the [12-week plan](../docs/12-week-plan.md). Prerequisites: the
 - [ ] Write a one-page comparison with Django/DRF: where each is the better choice
 
 ## Advanced tier (after week 12)
-- The real AI call: replace the stand-ins in `app/summarizer.py` and `app/flashcards.py` with a model API, keep the key in an environment variable, and keep the tests on the stand-in through a dependency override
-- Rate limiting: a dependency that limits logins and summary creation per user or per IP, with a 429 response and a `Retry-After` header
+- Shared rate limits: move the module 13 limiter's counts to Redis, so several processes share one budget, and add a daily cap on the app's model calls
+- Streaming: send the model's answer to the client as it arrives, with server-sent events
 - Production: Gunicorn with Uvicorn workers, timeouts, graceful shutdown, health checks
 - Reliability: retries, idempotency keys, circuit breakers around third-party APIs
 - Performance: connection pooling, caching with Redis, load testing, profiling

@@ -20,3 +20,9 @@ def get_flashcard_maker():
 #            transaction. Lesson, sections 3 and 6.
 async def write_flashcards(summary_id, maker):
     raise NotImplementedError("TODO 26")
+
+
+# TODO 32 (a real model and rate limits): change get_flashcard_maker() so it reads the settings:
+#          with the provider "stub" it returns the stand-in, as before, and with "gemini" it
+#          returns gemini_flashcard_maker(settings) from app/ai.py. The background job does not
+#          change. Read the lesson, section 5.

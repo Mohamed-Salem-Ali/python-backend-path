@@ -51,6 +51,7 @@ FASTAPI_FILES = {
     "test_auth": "Auth",
     "test_background": "Background work",
     "test_deployment": "Docker",
+    "test_ai": "Bonus: a real model and rate limits",
 }
 
 

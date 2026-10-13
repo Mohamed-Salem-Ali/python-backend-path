@@ -929,3 +929,35 @@ Each module's questions are the ones its lesson lists under "Check your understa
 2. What does Django's N+1 problem cost, and what does async SQLAlchemy do instead?
 
    *Your answer:*
+
+### 13 Bonus: a real model and rate limits
+
+[Lesson](../fastapi/13-ai-and-limits/lesson.md)
+
+1. Why is the API key a `SecretStr`, and where may it appear and where not?
+
+   *Your answer:*
+
+2. Name the ways a call to a model's API can fail. Why do they all become one exception and a 502, and not a 500?
+
+   *Your answer:*
+
+3. Why does the summarizer run with `run_in_threadpool`, and how would a test show that it does?
+
+   *Your answer:*
+
+4. A prompt asks for at most 50 words and a JSON answer. Why does the code still check both?
+
+   *Your answer:*
+
+5. How does a sliding-window rate limit work, and what should `Retry-After` say?
+
+   *Your answer:*
+
+6. Why does a rate limit kept in memory break with several processes, or behind a proxy?
+
+   *Your answer:*
+
+7. How do you test an HTTP client without the network, and a limiter without waiting?
+
+   *Your answer:*

@@ -51,7 +51,7 @@ The modules run in number order. Each one builds on the code of the one before: 
 | 11 | Async SQLAlchemy 2.0, Alembic, JWT auth, dependency injection | **Study API**, the AI wrapper project: saved summaries in a database, users, login and protected routes |
 | 12 | Background tasks, pytest for async, Docker, deployment | Flashcards made in the background, async tests, Dockerfile, deploy. **Portfolio project 2**. Compare it with the Django version in a short write-up |
 
-The Study API's summaries and flashcards come from small stand-in functions, so the course runs with no API key and no cost. Calling a real model (Gemini or another) and adding rate limiting are stretch goals for after week 12; the [FastAPI syllabus](../fastapi/SYLLABUS.md#advanced-tier-after-week-12) lists them.
+The Study API's summaries and flashcards come from small stand-in functions through week 12, so the course runs with no API key and no cost. A bonus module after week 12, [a real model and rate limits](../fastapi/13-ai-and-limits/lesson.md), puts a Gemini call behind the same dependencies and limits logins and model calls per caller. Its tests fake the model, so it still needs no key.
 
 **Checkpoint end of week 12:** two deployed projects, a README for each, and a blog-style "Django vs FastAPI, what I learned" note for your portfolio.
 

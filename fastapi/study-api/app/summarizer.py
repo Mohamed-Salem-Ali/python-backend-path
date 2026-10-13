@@ -1,7 +1,7 @@
 """A stand-in for an AI call. It keeps the first words and marks the cut with three dots.
 
-The course keeps this stand-in, so the project runs with no API key. Replacing it with a real model
-call is a stretch goal; see the advanced tier in fastapi/SYLLABUS.md.
+It stays the default, so the project runs with no API key. The bonus module 13 adds a real model
+call in app/ai.py, and the setting STUDY_AI_PROVIDER chooses between the two.
 """
 
 

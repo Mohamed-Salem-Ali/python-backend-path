@@ -194,7 +194,7 @@ The Study API still has gaps, and you should know them:
 
 - Anyone can delete any summary. `test_basics.py` deletes without a token, and that test has to keep passing for the course. A real app would check the owner before deleting.
 - Tokens cannot be revoked. A token works until its `exp`. Real apps add refresh tokens and a way to log out everywhere.
-- Login has no rate limit, so a password can be guessed as fast as the server answers.
+- Login has no rate limit, so a password can be guessed as fast as the server answers. The bonus module 13 adds one.
 - A login for an unknown username skips the hash, so its reply comes back sooner. Someone who times the replies can work out which usernames exist. The fix is to run a hash for unknown users too.
 
 ## Exit checklist

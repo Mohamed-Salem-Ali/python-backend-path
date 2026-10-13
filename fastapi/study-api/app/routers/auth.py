@@ -16,3 +16,7 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 #          An unknown user and a wrong password both raise HTTPException 401 with the detail
 #          "incorrect username or password" and the header WWW-Authenticate: Bearer. Otherwise
 #          return a Token with create_access_token(user.id).
+
+# TODO 35 (a real model and rate limits): add dependencies=[Depends(rate_limit)] to the "/token"
+#          route, so a password cannot be guessed as fast as the server answers. Register is not
+#          limited here. Read the lesson, section 7.

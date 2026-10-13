@@ -1,8 +1,8 @@
 """A stand-in for the AI call that writes flashcards. Module 12 (background work).
 
-It makes one card per sentence. The real version calls a model. The background job does not
-change when that happens, because the job only needs a function that takes text and returns
-(front, back) pairs.
+It makes one card per sentence, and it stays the default. The real version, in app/ai.py
+(module 13), calls a model. The background job does not change when that happens, because the job
+only needs a function that takes text and returns (front, back) pairs.
 """
 
 

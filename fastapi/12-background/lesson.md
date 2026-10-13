@@ -103,7 +103,7 @@ The generated `ForeignKeyConstraint` line must end in `ondelete='CASCADE'`. The 
 **Try it:** remove the `cursor.execute("PRAGMA foreign_keys=ON")` line from `database.py`, and run `pytest tests/test_background.py -k deleting`. Read the failure: the cards are still there. Put the line back.
 
 ## 5. The maker is a dependency
-The job needs a function that takes a summary's text and returns `(front, back)` pairs. Today that is the stand-in in `app/flashcards.py`. Later it will be a model call, which is slow and needs a key. The route does not import the function. It gets it from a dependency, and passes it to the job:
+The job needs a function that takes a summary's text and returns `(front, back)` pairs. Today that is the stand-in in `app/flashcards.py`. Later (the bonus module 13) it can be a model call, which is slow and needs a key. The route does not import the function. It gets it from a dependency, and passes it to the job:
 
 ```python
 def get_digest_writer():

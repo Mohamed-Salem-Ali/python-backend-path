@@ -20,6 +20,9 @@ PROJECT = Path(__file__).resolve().parents[1]
 TEST_DB_FILE = Path(tempfile.mkdtemp(prefix="study-api-tests-")) / "test.db"
 os.environ["STUDY_DATABASE_URL"] = f"sqlite+aiosqlite:///{TEST_DB_FILE.as_posix()}"
 os.environ["STUDY_SECRET_KEY"] = "test-only-secret-key-that-is-long-enough-for-hs256"
+# The rate limit is off for the whole run, so the many requests in the suite are not refused. The
+# rate-limit tests switch on a limiter of their own with a dependency override (module 13).
+os.environ["STUDY_RATE_LIMIT_PER_MINUTE"] = "0"
 
 from app.main import app  # noqa: E402  (imported after the variable above is set)
 

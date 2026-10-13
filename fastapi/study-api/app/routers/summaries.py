@@ -53,3 +53,14 @@ router = APIRouter(prefix="/summaries", tags=["summaries"])
 #   wait for the job.
 #   GET "/{summary_id}/flashcards" returns a list of FlashcardOut for the summary, ordered by
 #   id. A missing summary is a 404 with the same detail.
+
+# TODO 33 (a real model and rate limits): the create route stops calling summarize() itself.
+#         It takes summarizer=Depends(get_summarizer), from app.ai, and calls it with
+#         run_in_threadpool, because a model call waits on the network. A ModelError becomes
+#         HTTPException 502 with the detail "the model is unavailable", and nothing is saved.
+#         Cut the answer with fit_words before you save it. Add
+#         responses={429: {...}, 502: {...}} to the decorator, each with a "description", so the
+#         docs list both. Read the lesson, sections 4 and 5.
+
+# TODO 35 (a real model and rate limits): add dependencies=[Depends(rate_limit)] to the create
+#         route's decorator, with rate_limit from app.ratelimit. Read the lesson, section 7.

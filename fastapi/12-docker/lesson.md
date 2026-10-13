@@ -6,7 +6,7 @@ By the end you can package the Study API as a container image, run it with its c
 
 **What you write:** the Study API folder has a `Dockerfile` and a `.dockerignore` made of TODO comments. Fill them in (TODOs 28 and 29). The sections below explain each instruction. They do not give you the lines.
 
-Run this module's tests with `pytest tests/test_deployment.py`. These 12 tests read the two files as text, so they run without Docker. All 12 should pass when you finish. A bare `pytest` runs all 88 tests.
+Run this module's tests with `pytest tests/test_deployment.py`. These 12 tests read the two files as text, so they run without Docker. All 12 should pass when you finish. A bare `pytest` runs all 117 tests: the 88 of weeks 10 to 12, and the 29 of the bonus module 13, which fail until you do that module.
 
 **How to read the examples:** the examples use a made-up notes app, not the Study API. Section 7 is the one place that uses the real project, with commands you run yourself.
 
@@ -142,7 +142,7 @@ After the deploy, run the smoke tests in the checklist on the live URL, over HTT
 - A pipeline that builds and deploys on every push (CI/CD).
 - Secret rotation, and a store that is more than the platform's dashboard.
 - Scaling to several instances, and zero-downtime deploys.
-- The real model call. The summary and the flashcards still come from stand-in functions.
+- The real model call, and rate limits. The summary and the flashcards still come from stand-in functions. The bonus module 13 adds both.
 
 ## Exit checklist
 - [ ] I can say what goes into an image, what goes into a container, and what the environment provides at run time
@@ -151,4 +151,4 @@ After the deploy, run the smoke tests in the checklist on the live URL, over HTT
 - [ ] I can keep a secret out of the image, and say what `docker inspect` and `docker history` reveal
 - [ ] I can keep data across container restarts with a named volume
 - [ ] I can check the health status, and say which route and port it uses
-- [ ] `pytest tests/test_deployment.py` passes all 12 tests, and `pytest` passes all 88
+- [ ] `pytest tests/test_deployment.py` passes all 12 tests, and `pytest --ignore=tests/test_ai.py` passes all 88
