@@ -2,6 +2,22 @@
 
 By the end you can handle, raise and define exceptions properly, and write code that cleans up after itself.
 
+**Before you start: just enough about classes.** This module comes before OOP (module 07, week 3), but sections 5 and 7 write small classes. Here is all you need for now:
+
+```python
+class Account(Exception):  # a new class that inherits from Exception
+    def __init__(self, owner):  # runs when you create one: Account("Sara")
+        super().__init__(f"account of {owner}")  # let the parent class set itself up first
+        self.owner = owner  # self is the new object; this stores a value on it
+```
+
+- `class Child(Parent):` makes a new type that gets everything `Parent` has.
+- `__init__` sets up a new object. `self` is that object, and `self.name = ...` stores a value on it.
+- `super().__init__(...)` calls the parent's `__init__`, so the parent part is set up too.
+- Methods with double underscores, such as `__enter__` and `__exit__`, are ones Python calls for you. Section 7 shows when.
+
+Module 07 explains all of this properly. For this module, copying the shape above is enough.
+
 ## 1. What an exception is
 When something goes wrong, Python **raises** an exception object. If nothing **catches** it, the program stops and prints a traceback (Module 01: read it from the bottom).
 

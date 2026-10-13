@@ -4,7 +4,7 @@ Weeks 10–12 of the [12-week plan](../docs/12-week-plan.md). Prerequisites: the
 
 **Level target:** design, test, containerize and deploy an async API, and explain when FastAPI is the better choice than Django.
 
-**Project:** an AI wrapper API (summaries, explanations, flashcards) with users, saved results, rate limiting and background work.
+**Project:** the [Study API](study-api/), an AI wrapper API with saved summaries, users and login, and flashcards made in the background. The "AI" is a stand-in function, so the course needs no API key; a real model call is in the advanced tier.
 
 ## Core track
 
@@ -14,7 +14,7 @@ Weeks 10–12 of the [12-week plan](../docs/12-week-plan.md). Prerequisites: the
 | 10 | FastAPI basics | routing, path/query/body parameters, response models, status codes |
 | 10 | Pydantic v2 | validate input, define schemas, settings from environment variables |
 | 11 | Database | async SQLAlchemy 2.0 sessions, models, relations, Alembic migrations |
-| 11 | Dependency injection | build reusable dependencies (DB session, current user, rate limit) |
+| 11 | Dependency injection | build reusable dependencies (DB session, current user) |
 | 11 | Auth | password hashing, JWT access tokens, protected routes |
 | 12 | Background work | `BackgroundTasks`, and when to reach for a real queue |
 | 12 | Testing | async pytest, dependency overrides, a test database |
@@ -30,6 +30,8 @@ Weeks 10–12 of the [12-week plan](../docs/12-week-plan.md). Prerequisites: the
 - [ ] Write a one-page comparison with Django/DRF: where each is the better choice
 
 ## Advanced tier (after week 12)
+- The real AI call: replace the stand-ins in `app/summarizer.py` and `app/flashcards.py` with a model API, keep the key in an environment variable, and keep the tests on the stand-in through a dependency override
+- Rate limiting: a dependency that limits logins and summary creation per user or per IP, with a 429 response and a `Retry-After` header
 - Production: Gunicorn with Uvicorn workers, timeouts, graceful shutdown, health checks
 - Reliability: retries, idempotency keys, circuit breakers around third-party APIs
 - Performance: connection pooling, caching with Redis, load testing, profiling

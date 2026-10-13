@@ -28,8 +28,6 @@ A passing file prints `All checks passed`. Week projects live in `week-N-project
 | 14 | [14-packaging](14-packaging/) | Packaging | 4 | Ready | lesson, exercises, `gameya_toolkit/` |
 | 15 | [15-capstone-task-tracker](15-capstone-task-tracker/) | Capstone: Task Tracker CLI | 4 | Ready | README, `src/`, `tests/` |
 
-Folders for planned modules are created when the lesson is written.
-
 ## Week projects
 
 | Folder | Week | Project |

@@ -1,4 +1,4 @@
-"""Module 04 exercises. Fill the TODOs, run:  python 04-control-flow/exercises.py"""
+"""Module 04 exercises. Fill the TODOs, run:  python python/04-control-flow/exercises.py"""
 
 
 # 1. Return "fizz" for multiples of 3, "buzz" for multiples of 5, "fizzbuzz" for both, else the number as a string.

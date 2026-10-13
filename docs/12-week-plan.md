@@ -35,9 +35,11 @@ On a 2 h day: do Learn + Wrap-up. On a 5 h day: add a second Build block, never 
 |---|---|---|
 | 5 | 01 Architecture (MTV, project vs app), 02 Models and ORM | Start **Gameya in Django**: models, migrations, relations, QuerySets, a `status` method per cell |
 | 6 | 03 Admin and forms, 04 Views, 05 Templates | Admin for members and payments, the public gameya page, forms with validation |
-| 7 | 07 Middleware and signals, 08 Testing in Django, 09 Caching and performance | Audit log via signals, tests with pytest-django, kill the N+1 queries, add `select_related` |
-| 8 | 06 DRF: serializers, viewsets, permissions, pagination | Expose Gameya as a REST API with token or JWT auth |
-| 9 | 10 Background tasks (Celery eager), 11 Auth and security, 12 Deployment, 13 Capstone | Payment-reminder task, security review, deploy to Render or Railway. **Portfolio project 1** |
+| 7 | 06 DRF: serializers, viewsets, permissions, pagination; 07 Middleware and signals | Expose Gameya as a REST API with token auth, then a request id on every response and an audit log via signals |
+| 8 | 08 Testing in Django, 09 Caching and performance, 10 Background tasks (Celery eager) | Tests with pytest-django and factories, kill the N+1 queries with `select_related` and `prefetch_related`, the weekly unpaid-payments report |
+| 9 | 11 Auth and security, 12 Deployment, 13 Capstone | JWT and ownership permissions, security review, deploy to Render. **Portfolio project 1** |
+
+The modules run in number order. Each one builds on the code of the one before: module 07's tests, for example, call the API root that module 06 adds.
 
 **Checkpoint end of week 9:** Gameya runs in production on Django. You can explain why `select_related` fixes N+1 and how a migration works.
 
@@ -46,8 +48,10 @@ On a 2 h day: do Learn + Wrap-up. On a 5 h day: add a second Build block, never 
 | Week | Focus | Build |
 |---|---|---|
 | 10 | Python async (module 12), FastAPI basics, Pydantic v2 | Scaffold the API, first endpoints, request and response models |
-| 11 | Async SQLAlchemy 2.0, Alembic, JWT auth, dependency injection | **AI wrapper API** (summarize, explain code, flashcards with Gemini): users, a saved-results resource, rate limiting |
-| 12 | Background tasks, pytest for async, Docker, deployment | Tests, Dockerfile, deploy. **Portfolio project 2**. Compare it with the Django version in a short write-up |
+| 11 | Async SQLAlchemy 2.0, Alembic, JWT auth, dependency injection | **Study API**, the AI wrapper project: saved summaries in a database, users, login and protected routes |
+| 12 | Background tasks, pytest for async, Docker, deployment | Flashcards made in the background, async tests, Dockerfile, deploy. **Portfolio project 2**. Compare it with the Django version in a short write-up |
+
+The Study API's summaries and flashcards come from small stand-in functions, so the course runs with no API key and no cost. Calling a real model (Gemini or another) and adding rate limiting are stretch goals for after week 12; the [FastAPI syllabus](../fastapi/SYLLABUS.md#advanced-tier-after-week-12) lists them.
 
 **Checkpoint end of week 12:** two deployed projects, a README for each, and a blog-style "Django vs FastAPI, what I learned" note for your portfolio.
 

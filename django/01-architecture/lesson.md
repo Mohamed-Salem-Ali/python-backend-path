@@ -193,6 +193,6 @@ The shell has your whole project loaded. Use it constantly to try ideas.
 ## Do the exercises
 The wiring is already there. You write the views, URLs and one template.
 1. Read `circles/tests/test_architecture.py` (it is the specification).
-2. Run `python manage.py test circles.tests.test_architecture`. The three "wiring" tests pass; the rest fail.
+2. Run `python manage.py test circles.tests.test_architecture`. The three "wiring" tests pass. So do three tests that expect a 404, because a route that does not exist yet also answers 404; they become real checks once your routes exist. The other eight fail.
 3. Fill in `circles/views.py` (four views), `circles/urls.py` (four named routes) and create `circles/templates/circles/about.html`. Run the tests after each step until they all pass.
 4. Open `runserver` and visit each page in the browser, too.

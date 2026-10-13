@@ -59,8 +59,8 @@ This course builds two projects with two frameworks. Gameya, in the Django track
 The test counts are functions in the repo's test files. They are not a measure of quality, and the projects differ in scope. Run these from the repo root:
 
 ```bash
-grep -rh "^def test_" django/gameya_site/circles/tests/ | wc -l
-grep -rh "^def test_\|^async def test_" fastapi/study-api/tests/ | wc -l
+grep -rhE "^\s*def test_" django/gameya_site/circles/tests/ | wc -l
+grep -rhE "^(async )?def test_" fastapi/study-api/tests/ | wc -l
 ```
 
-The first prints 79, and the second prints 88 at the time of writing. Each lesson named above has a section that shows the behavior with a short example. The [Study API](../study-api/) holds the FastAPI side, and the [Gameya project](../../django/gameya_site/) holds the Django side.
+The first prints 254, and the second prints 88 at the time of writing. The Django count includes the methods inside `TestCase` classes, which is why its pattern allows leading spaces; the Study API's tests are all plain functions. A few Django tests are parametrized, so pytest runs slightly more Django cases than the count shows. Each lesson named above has a section that shows the behavior with a short example. The [Study API](../study-api/) holds the FastAPI side, and the [Gameya project](../../django/gameya_site/) holds the Django side.

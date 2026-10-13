@@ -15,14 +15,14 @@ Weeks 5–9 of the [12-week plan](../docs/12-week-plan.md). Prerequisite: the [P
 | 03 | [Admin and forms](03-admin-forms/lesson.md) | 6 | configure the admin, write forms and validation |
 | 04 | [Views](04-views/lesson.md) | 6 | choose between function and class-based views |
 | 05 | [Templates](05-templates/lesson.md) | 6 | render templates with inheritance |
-| 06 | [Django REST Framework](06-drf/lesson.md) | 8 | serializers, viewsets and routers, permissions, auth, pagination, filtering |
+| 06 | [Django REST Framework](06-drf/lesson.md) | 7 | serializers, viewsets and routers, permissions, auth, pagination, filtering |
 | 07 | [Middleware and signals](07-middleware-signals/lesson.md) | 7 | write middleware; use signals (and know when not to) |
-| 08 | [Testing](08-testing/lesson.md) | 7 | test with pytest-django, factories and the test client |
-| 09 | [Caching and performance](09-caching-performance/lesson.md) | 7 | find and fix N+1 queries (`select_related`, `prefetch_related`), use the cache framework |
-| 10 | Background tasks | 9 | run Celery tasks, schedule jobs |
-| 11 | Auth and security | 9 | sessions vs JWT, CSRF, XSS, ownership permissions, secure settings |
-| 12 | Deployment | 9 | gunicorn, static files, env-driven settings, deploy to a real host |
-| 13 | Capstone: Gameya portfolio project | 9 | ship Gameya to a real host, with a README and a short write-up for your portfolio |
+| 08 | [Testing](08-testing/lesson.md) | 8 | test with pytest-django, factories and the test client |
+| 09 | [Caching and performance](09-caching-performance/lesson.md) | 8 | find and fix N+1 queries (`select_related`, `prefetch_related`), use the cache framework |
+| 10 | [Background tasks](10-background-tasks/lesson.md) | 8 | run Celery tasks, schedule jobs |
+| 11 | [Auth and security](11-auth-security/lesson.md) | 9 | sessions vs JWT, CSRF, XSS, ownership permissions, secure settings |
+| 12 | [Deployment](12-deployment/lesson.md) | 9 | gunicorn, static files, env-driven settings, deploy to a real host |
+| 13 | [Capstone: Gameya portfolio project](13-capstone/lesson.md) | 9 | ship Gameya to a real host, with a README and a short write-up for your portfolio |
 
 ## Exit exam: "I know Django"
 - [ ] Trace a request from the URL to the response, naming each layer it passes through

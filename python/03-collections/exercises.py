@@ -1,4 +1,4 @@
-"""Module 03 exercises. Fill the TODOs, run:  python 03-collections/exercises.py"""
+"""Module 03 exercises. Fill the TODOs, run:  python python/03-collections/exercises.py"""
 
 
 # 1. Return a new list with the first and last items swapped. Do not modify the argument.

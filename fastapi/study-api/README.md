@@ -1,8 +1,8 @@
 # Study API
 
-The first stage of an AI wrapper API, built in the FastAPI track. It stores summaries in a database and serves them over HTTP. The summary comes from a stand-in function for now. A real model call comes later, in the background.
+The first stage of an AI wrapper API, built in the FastAPI track. It stores summaries in a database and serves them over HTTP. The summaries and flashcards come from small stand-in functions, so the project runs with no API key and no cost. Replacing them with a real model call is a stretch goal after the course; see the advanced tier in the [FastAPI syllabus](../SYLLABUS.md#advanced-tier-after-week-12).
 
-The lessons are in [../10-basics/lesson.md](../10-basics/lesson.md) (routes), [../10-pydantic/lesson.md](../10-pydantic/lesson.md) (validation and settings), [../11-database/lesson.md](../11-database/lesson.md) (the database and migrations) [../11-auth/lesson.md](../11-auth/lesson.md) (dependencies, passwords and tokens) and [../12-background/lesson.md](../12-background/lesson.md) (background work and async tests) and [../12-docker/lesson.md](../12-docker/lesson.md) (Docker and deployment). This folder is the project you build while you work through them.
+The lessons are in [../10-basics/lesson.md](../10-basics/lesson.md) (routes), [../10-pydantic/lesson.md](../10-pydantic/lesson.md) (validation and settings), [../11-database/lesson.md](../11-database/lesson.md) (the database and migrations), [../11-auth/lesson.md](../11-auth/lesson.md) (dependencies, passwords and tokens), [../12-background/lesson.md](../12-background/lesson.md) (background work and async tests) and [../12-docker/lesson.md](../12-docker/lesson.md) (Docker and deployment). This folder is the project you build while you work through them.
 
 ## Setup and run
 

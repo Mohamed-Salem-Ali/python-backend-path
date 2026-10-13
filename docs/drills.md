@@ -6,7 +6,7 @@ The Drill block in the [12-week plan](12-week-plan.md) is 20 minutes of one codi
 
 - Set a 20-minute timer, and solve the problem in a scratch file outside this repository.
 - If you are still stuck when the timer ends, stop. Write the blocker in your 3-line wrap-up, and redo the problem on Day 6 from memory.
-- Each week has five drill days. Day 6 is review, so it repeats the week's weakest problem. Some weeks list four problems; use the fifth day to repeat the hardest one.
+- Each week has five drill days. Day 6 is review, so it repeats the week's weakest problem. Weeks with fewer than five problems use the spare days to repeat the hardest one. Week 8 lists seven; do five, and keep the other two for a later review day.
 - Easy problems rarely match a module exactly. The Module column names the module each drill warms up for.
 - Where a module has no easy HackerRank problem, the week's notes say what to do instead.
 
@@ -80,34 +80,34 @@ Module 01 Architecture is about the project's layout, so its drill is the week's
 
 | # | Module | Problem |
 |---|---|---|
-| 1 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Revising Aggregations - The Count Function](https://www.hackerrank.com/challenges/revising-aggregations-the-count-function/problem) |
-| 2 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Revising Aggregations - The Sum Function](https://www.hackerrank.com/challenges/revising-aggregations-sum/problem) |
-| 3 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Revising Aggregations - Averages](https://www.hackerrank.com/challenges/revising-aggregations-the-average-function/problem) |
-| 4 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Average Population](https://www.hackerrank.com/challenges/average-population/problem) |
-| 5 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Weather Observation Station 4](https://www.hackerrank.com/challenges/weather-observation-station-4/problem) |
+| 1 | [Django 06 REST Framework](../django/06-drf/lesson.md) | [Collections.OrderedDict()](https://www.hackerrank.com/challenges/py-collections-ordereddict/problem) |
+| 2 | [Django 06 REST Framework](../django/06-drf/lesson.md) | [Collections.namedtuple()](https://www.hackerrank.com/challenges/py-collections-namedtuple/problem) |
+| 3 | [Django 06 REST Framework](../django/06-drf/lesson.md) | [DefaultDict Tutorial](https://www.hackerrank.com/challenges/defaultdict-tutorial/problem) |
 
-Modules 07 Middleware and signals and 08 Testing have no easy problem. Use the module's pytest tests as the drill.
+Serializers turn Python dictionaries into JSON and back, so these three practise the dictionary and record shapes that they read and return. Module 07 Middleware and signals has no easy problem. Use its pytest tests as the drill on the other days.
 
 ### Week 8
 
 | # | Module | Problem |
 |---|---|---|
-| 1 | [Django 06 Django REST framework](../django/06-drf/lesson.md) | [Collections.OrderedDict()](https://www.hackerrank.com/challenges/py-collections-ordereddict/problem) |
-| 2 | [Django 06 Django REST framework](../django/06-drf/lesson.md) | [Collections.namedtuple()](https://www.hackerrank.com/challenges/py-collections-namedtuple/problem) |
-| 3 | [Django 06 Django REST framework](../django/06-drf/lesson.md) | [DefaultDict Tutorial](https://www.hackerrank.com/challenges/defaultdict-tutorial/problem) |
+| 1 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Revising Aggregations - The Count Function](https://www.hackerrank.com/challenges/revising-aggregations-the-count-function/problem) |
+| 2 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Revising Aggregations - The Sum Function](https://www.hackerrank.com/challenges/revising-aggregations-sum/problem) |
+| 3 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Revising Aggregations - Averages](https://www.hackerrank.com/challenges/revising-aggregations-the-average-function/problem) |
+| 4 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Average Population](https://www.hackerrank.com/challenges/average-population/problem) |
+| 5 | [Django 09 Caching and performance](../django/09-caching-performance/lesson.md) | [Weather Observation Station 4](https://www.hackerrank.com/challenges/weather-observation-station-4/problem) |
+| 6 | [Django 10 Background tasks](../django/10-background-tasks/lesson.md) | [The Blunder](https://www.hackerrank.com/challenges/the-blunder/problem) |
+| 7 | [Django 10 Background tasks](../django/10-background-tasks/lesson.md) | [Top Earners](https://www.hackerrank.com/challenges/earnings-of-employees/problem) |
 
-Serializers turn Python dictionaries into JSON and back, so these three practise the dictionary and record shapes that they read and return.
+Module 08 Testing has no easy problem; its own tests are the drill. The weekly unpaid-payments report in module 10 is a query like the last two.
 
 ### Week 9
 
 | # | Module | Problem |
 |---|---|---|
-| 1 | [Django 10 Background tasks](../django/10-background-tasks/lesson.md) | [The Blunder](https://www.hackerrank.com/challenges/the-blunder/problem) |
-| 2 | [Django 10 Background tasks](../django/10-background-tasks/lesson.md) | [Top Earners](https://www.hackerrank.com/challenges/earnings-of-employees/problem) |
-| 3 | Django 10 to 13 | [Weather Observation Station 3](https://www.hackerrank.com/challenges/weather-observation-station-3/problem) |
-| 4 | Django 10 to 13 | [Weather Observation Station 5](https://www.hackerrank.com/challenges/weather-observation-station-5/problem) |
+| 1 | [Django 11 Auth and security](../django/11-auth-security/lesson.md) | [Weather Observation Station 3](https://www.hackerrank.com/challenges/weather-observation-station-3/problem) |
+| 2 | [Django 11 Auth and security](../django/11-auth-security/lesson.md) | [Weather Observation Station 5](https://www.hackerrank.com/challenges/weather-observation-station-5/problem) |
 
-The weekly unpaid-payments report in module 10 is a query like the first two. The last two practise filters, which reports and permission checks both use.
+Both practise filters, which permission checks use. The rest of the week is the deploy and the write-up, so the Drill block can go to redoing a weak problem from an earlier week.
 
 ## Weeks 10 to 12: FastAPI
 

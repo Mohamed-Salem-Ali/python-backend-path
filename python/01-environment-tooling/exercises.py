@@ -1,4 +1,4 @@
-"""Module 01 exercises. Fill in each TODO, then run:  python 01-environment-tooling/exercises.py"""
+"""Module 01 exercises. Fill the TODOs, run:  python python/01-environment-tooling/exercises.py"""
 
 import sys
 

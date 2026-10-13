@@ -18,7 +18,7 @@ On a short day (2 h): do Learn + Wrap-up only.
 (Move the review/ship work to Day 6 if you take a rest day on Day 7. The plan has you work six days.)
 
 ## Week project: contacts and word counter
-See [week1-project/README.md](week1-project/README.md). It uses everything from this week.
+See [week-1-project/README.md](week-1-project/README.md). It uses everything from this week.
 
 ## Daily wrap-up template (copy into `notes.md`)
 ```

@@ -1,4 +1,4 @@
-"""Module 02 exercises. Fill the TODOs, run:  python 02-core-syntax-data-types/exercises.py"""
+"""Module 02 exercises. Fill the TODOs, run:  python python/02-core-syntax-data-types/exercises.py"""
 
 import math
 
