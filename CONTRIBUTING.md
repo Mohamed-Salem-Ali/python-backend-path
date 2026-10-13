@@ -11,3 +11,4 @@ Thanks for helping. This is a learning repo, so clarity matters more than clever
 - Do not commit solutions to exercises. Keep reference solutions out of this repo.
 - Python 3.12, formatted and linted with [Ruff](https://docs.astral.sh/ruff/): `ruff format .` and `ruff check .`.
 - Keep line length at 100.
+- Before a pull request, run `python scripts/check_links.py`, so every relative link and heading link still resolves. CI runs it too, along with Ruff and a check that both projects' tests still load.

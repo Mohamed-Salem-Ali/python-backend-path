@@ -6,7 +6,7 @@ It is written in the open by a working developer relearning the fundamentals pro
 
 ## How it works
 1. Read the **lesson** (`lesson.md`) and type every example yourself.
-2. Fill in the `TODO`s in **`exercises.py`** and run it. A passing file prints `All checks passed`. Django and the capstone are checked by tests instead.
+2. Fill in the `TODO`s in **`exercises.py`** and run it. A passing file prints `All checks passed`. Django, FastAPI and the Python capstone are checked by pytest tests instead.
 3. Finish the week's **project**.
 4. Write down what you learned. Tick the checkpoint.
 
@@ -28,6 +28,15 @@ source .venv/bin/activate
 pip install -r requirements-dev.txt
 python python/01-environment-tooling/exercises.py
 ```
+
+## Check your progress
+One command shows what passes so far, across all three tracks:
+
+```bash
+python scripts/progress.py
+```
+
+It runs every Python module's check and both projects' tests, and prints one line per module or test file. Pass a track name (`python`, `django` or `fastapi`) to see just that one. The Django and FastAPI parts need their project's requirements installed; see [scripts/](scripts/README.md).
 
 ## Roadmap
 The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by-day detail is in each `WEEK-N.md` file.
@@ -73,10 +82,11 @@ Optional interactive summaries made with Google NotebookLM. Use them for a recap
 
 ## Repository layout
 ```text
-python/    SYLLABUS.md, lessons, exercises and projects (weeks 1-4, module 12 in week 10)
-django/    SYLLABUS.md, the Django project (gameya_site/) and lessons (weeks 5-9)
-fastapi/   SYLLABUS.md and README (weeks 10-12, not written yet)
-docs/      the 12-week plan and the how-to-learn guide
+python/    SYLLABUS.md, WEEK-1 to WEEK-4, lessons, exercises and projects (module 12 is in week 10)
+django/    SYLLABUS.md, WEEK-5 to WEEK-9, lessons and the Gameya project (gameya_site/)
+fastapi/   SYLLABUS.md, WEEK-10 to WEEK-12, lessons and the Study API project (study-api/)
+docs/      the 12-week plan, how to learn, drills, interview questions, weekly reflection
+scripts/   progress.py: one table of what passes so far, across all three tracks
 ```
 
 Each track has its own syllabus with an exit exam (what "I know it" means) and an advanced tier for going deeper after week 12.

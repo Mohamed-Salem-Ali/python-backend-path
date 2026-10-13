@@ -17,6 +17,17 @@ jobs:
       - run: ruff check .
       - run: ruff format --check .
 
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/check_links.py
+
+  # The exercises start as stubs, so the tests are expected to fail. These jobs only check that the
+  # projects load and that every test can be collected, so a broken import cannot slip in.
   django-check:
     runs-on: ubuntu-latest
     defaults:
@@ -29,3 +40,17 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - run: python manage.py check
+      - run: python -m pytest --collect-only -q -p no:cacheprovider --ds=config.settings circles/tests
+
+  fastapi-collect:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fastapi/study-api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest --collect-only -q -p no:cacheprovider
