@@ -15,6 +15,8 @@ Exercises start as stubs on purpose, so a fresh clone fails until you do the wor
 ## Quick start
 Requires Python 3.12+.
 
+**No setup:** open the repo in GitHub Codespaces (Code, then Codespaces, then Create codespace), or in VS Code with the Dev Containers extension. The [dev container](.devcontainer/devcontainer.json) installs Python 3.12, the course tools, and both projects' requirements, so you can skip the steps below.
+
 ```bash
 git clone https://github.com/Mohamed-Salem-Ali/python-backend-path.git
 cd python-backend-path
@@ -37,6 +39,8 @@ python scripts/progress.py
 ```
 
 It runs every Python module's check and both projects' tests, and prints one line per module or test file. Pass a track name (`python`, `django` or `fastapi`) to see just that one. The Django and FastAPI parts need their project's requirements installed; see [scripts/](scripts/README.md).
+
+Working in your own fork? Open Actions, choose **progress**, then **Run workflow**. It installs everything, runs the same checks, and shows the table on the run's summary page.
 
 ## Roadmap
 The week-by-week plan is in [docs/12-week-plan.md](docs/12-week-plan.md). Day-by-day detail is in each `WEEK-N.md` file.
@@ -87,6 +91,7 @@ django/    SYLLABUS.md, WEEK-5 to WEEK-9, lessons and the Gameya project (gameya
 fastapi/   SYLLABUS.md, WEEK-10 to WEEK-12, lessons and the Study API project (study-api/)
 docs/      the 12-week plan, how to learn, drills, interview questions, weekly reflection
 scripts/   progress.py: one table of what passes so far, across all three tracks
+.devcontainer/  a ready-to-run setup for Codespaces and VS Code
 ```
 
 Each track has its own syllabus with an exit exam (what "I know it" means) and an advanced tier for going deeper after week 12.

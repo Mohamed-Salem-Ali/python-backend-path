@@ -1,0 +1,31 @@
+name: progress
+
+# Run this in your own fork to see how far you are: Actions -> progress -> Run workflow.
+# It runs every Python module's check and both projects' tests, and puts the table on the run's
+# summary page. It never fails the run: "not yet" is a normal state while you work.
+on:
+  workflow_dispatch:
+
+jobs:
+  progress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the course tools
+        run: pip install -r requirements-dev.txt
+      - name: Install the Django project's requirements in its own .venv
+        working-directory: django/gameya_site
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -r requirements.txt
+      - name: Install the Study API's requirements in its own .venv
+        working-directory: fastapi/study-api
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -r requirements.txt
+      - name: Report progress
+        run: python scripts/progress.py

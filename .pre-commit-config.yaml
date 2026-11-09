@@ -1,0 +1,11 @@
+# Optional: run Ruff on every commit, the same checks CI runs.
+#   pip install pre-commit
+#   pre-commit install
+# After that, a commit with a lint error or unformatted code stops, and Ruff says why.
+# The format hook also formats the Python code blocks in the Markdown lessons, as CI does.
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.10
+    hooks:
+      - id: ruff-check
+      - id: ruff-format

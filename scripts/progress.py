@@ -4,12 +4,16 @@ Run it from the repo root:
 
     python scripts/progress.py            # all three tracks
     python scripts/progress.py python     # one track: python, django or fastapi
+    python scripts/progress.py --markdown # the same table as Markdown
 
 It only reads and runs your code; it changes nothing. Each Python module counts as passing when its
 check exits cleanly (`exercises.py`, or `check_tests.py` for module 13, or the capstone's tests).
 The Django and FastAPI projects are run with pytest, and each test file shows how many of its tests
 pass. Those two need their own requirements installed: the script uses the project's `.venv` if
 there is one, and the Python that runs this script otherwise.
+
+In GitHub Actions, where GITHUB_STEP_SUMMARY is set, the Markdown table is also written to the
+run's summary page. The progress workflow in .github/workflows uses that.
 """
 
 from __future__ import annotations
@@ -65,12 +69,41 @@ def run(command: list[str], cwd: Path) -> subprocess.CompletedProcess[str] | Non
         return None
 
 
+# Each row is (section, label, result). A row with no label is a section heading.
+ROWS: list[tuple[str, str, str]] = []
+
+
+def section(title: str) -> None:
+    ROWS.append((title, "", ""))
+
+
 def line(label: str, result: str) -> None:
-    print(f"  {label:<56} {result}")
+    ROWS.append((ROWS[-1][0], label, result))
+
+
+def as_text(summary: list[tuple[str, int, int]]) -> str:
+    out = []
+    for title, label, result in ROWS:
+        out.append(f"\n{title}" if not label else f"  {label:<56} {result}")
+    out.append("")
+    out += [f"{label}: {done} of {total} pass" for label, done, total in summary]
+    return "\n".join(out)
+
+
+def as_markdown(summary: list[tuple[str, int, int]]) -> str:
+    out = ["## Course progress", ""]
+    out += [f"- **{label}:** {done} of {total} pass" for label, done, total in summary]
+    for title, label, result in ROWS:
+        if not label:
+            out += ["", f"### {title}", "", "| Module or test file | Result |", "|---|---|"]
+        else:
+            mark = "✅" if result.endswith("PASS") else "⬜"
+            out.append(f"| {label} | {mark} {' '.join(result.split())} |")
+    return "\n".join(out) + "\n"
 
 
 def python_track() -> tuple[int, int]:
-    print("\nPython (python/)")
+    section("Python (python/)")
     done = total = 0
     for folder in sorted(p for p in PYTHON.iterdir() if p.is_dir() and p.name[:2].isdigit()):
         if (folder / "check_tests.py").exists():
@@ -131,7 +164,7 @@ def pytest_by_file(interpreter: str, project: Path, extra: list[str]) -> dict[st
 
 
 def project_track(title: str, project: Path, probe: str, files: dict, extra: list[str]):
-    print(f"\n{title}")
+    section(title)
     interpreter = project_python(project, probe)
     if interpreter is None:
         requirements = (project / "requirements.txt").relative_to(ROOT).as_posix()
@@ -155,7 +188,8 @@ def project_track(title: str, project: Path, probe: str, files: dict, extra: lis
 
 
 def main(argv: list[str]) -> int:
-    tracks = argv or ["python", "django", "fastapi"]
+    markdown = "--markdown" in argv
+    tracks = [arg for arg in argv if arg != "--markdown"] or ["python", "django", "fastapi"]
     unknown = set(tracks) - {"python", "django", "fastapi"}
     if unknown:
         print(f"Unknown track: {', '.join(sorted(unknown))}. Use python, django or fastapi.")
@@ -178,9 +212,14 @@ def main(argv: list[str]) -> int:
             "FastAPI (fastapi/study-api)", FASTAPI, "fastapi, pytest", FASTAPI_FILES, ["tests"]
         )
         summary.append(("FastAPI test files", *found))
-    print()
-    for label, done, total in summary:
-        print(f"{label}: {done} of {total} pass")
+    report = as_markdown(summary)
+    # An older Windows console cannot print the check marks; show "?" there instead of crashing.
+    sys.stdout.reconfigure(errors="replace")
+    print(report if markdown else as_text(summary))
+    summary_file = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_file:
+        with open(summary_file, "a", encoding="utf-8") as handle:
+            handle.write(report)
     return 0
 
 
