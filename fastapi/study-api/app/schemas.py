@@ -7,6 +7,8 @@ route with response_model=SummaryOut sends back only the fields that SummaryOut 
 from pydantic import BaseModel
 
 # TODO 8 (Pydantic): add the rules to SummaryIn. Read the Pydantic lesson, sections 1 to 5.
+#   Do TODO 7 in app/config.py first. This file reads the limit from get_settings() when it is
+#   imported, so until TODO 7 exists the app stops at start-up with NotImplementedError: TODO 7.
 #   - text: trim the spaces at both ends, then refuse a blank text with the message
 #     "text must not be blank". Do this in a field_validator, and raise ValueError inside it.
 #   - max_words: a whole number from 1 up to the limit in app/config.py. Read that limit once,

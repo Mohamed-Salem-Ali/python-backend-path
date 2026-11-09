@@ -13,7 +13,7 @@ pip install -r requirements.txt
 python manage.py check                # should say: no issues
 python manage.py test                 # many tests fail on purpose: they are your to-do list
 ```
-The tests are the specification. A new test passing is your progress bar.
+The tests are the specification. A new test passing is your progress bar. If a setup step fails, or `pytest` stops before any test runs, see [troubleshooting](../docs/troubleshooting.md#django-track).
 
 | Day | Learn | Build / exercises | Drill |
 |---|---|---|---|

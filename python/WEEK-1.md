@@ -4,6 +4,7 @@ Goal by Saturday: write small programs that read input, loop, store data in list
 
 Daily shape: **Learn 1–1.5 h → Build 1–1.5 h → Drill 20 min → Wrap-up 10 min** (see [the plan](../docs/12-week-plan.md)).
 On a short day (2 h): do Learn + Wrap-up only.
+If creating or activating the venv fails on day 1, see [troubleshooting](../docs/troubleshooting.md#setup-all-tracks).
 
 | Day | Learn | Build / exercises | Drill |
 |---|---|---|---|

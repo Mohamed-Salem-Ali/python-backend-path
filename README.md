@@ -99,6 +99,8 @@ Each track has its own syllabus with an exit exam (what "I know it" means) and a
 ## Learning rules
 See [docs/how-to-learn.md](docs/how-to-learn.md). In short: predict before you run, read errors from the bottom, and explain each idea out loud.
 
+Stuck on an error? [docs/troubleshooting.md](docs/troubleshooting.md) lists the common ones, with the exact message and the fix.
+
 ## Contributing
 Found a typo, a wrong check, or a confusing explanation? Please open an issue or a pull request. See [CONTRIBUTING.md](CONTRIBUTING.md).
 

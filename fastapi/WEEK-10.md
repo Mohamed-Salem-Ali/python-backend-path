@@ -15,7 +15,7 @@ pip install -r requirements.txt
 pytest                                # every test errors at first: they are your to-do list
 ```
 
-The tests need the database from week 11, so this week check your routes with `uvicorn app.main:app --reload` and the docs page at `http://127.0.0.1:8000/docs`. The [Study API README](study-api/README.md#tests) explains when each test file starts to pass.
+The tests need the database from week 11, so this week check your routes with `uvicorn app.main:app --reload` and the docs page at `http://127.0.0.1:8000/docs`. The [Study API README](study-api/README.md#tests) explains when each test file starts to pass, and [troubleshooting](../docs/troubleshooting.md#every-test-fails-with-todo-7) explains the `TODO 7` error you will see until then.
 
 | Day | Learn | Build / exercises | Drill |
 |---|---|---|---|
@@ -23,8 +23,8 @@ The tests need the database from week 11, so this week check your routes with `u
 | **2** | Python 12 sections 5–10: asyncio, `gather`, cancellation, queues, choosing | checks 5–10; the file prints `All checks passed` | 1 easy problem |
 | **3** | [FastAPI basics](10-basics/lesson.md) sections 1–5: type hints, routing, path and query parameters, the body | Setup above; TODO 1 (create) and TODO 5 (include the router); try a POST from the docs page | 1 problem |
 | **4** | Basics sections 6–10: response models, status codes, `def` or `async def`, the docs, testing a route | TODOs 2, 3 and 4 (list, fetch, delete), TODO 6 (`/health`); check each status code from the docs page | 1 problem |
-| **5** | [Pydantic v2](10-pydantic/lesson.md) sections 1–5: checking data, coercion, constraints, validators, input vs output models | TODO 8, the rules on `SummaryIn`; send a blank text and an unknown field and read the 422 | 1 problem |
-| **6** | Pydantic sections 6–8: settings from the environment, the docs, common mistakes | TODO 7, the `Settings` class; change `STUDY_MAX_WORDS` and watch the limit move | 1 problem |
+| **5** | [Pydantic v2](10-pydantic/lesson.md) sections 1–3 and 6: checking data, coercion, constraints, settings from the environment | TODO 7, the `Settings` class, first: TODO 8 reads its limit from `get_settings()`, so the app cannot start without it. Change `STUDY_MAX_WORDS` and print `get_settings()` | 1 problem |
+| **6** | Pydantic sections 4, 5, 7 and 8: validators, input vs output models, the docs, common mistakes | TODO 8, the rules on `SummaryIn`; send a blank text and an unknown field and read the 422; restart with a new `STUDY_MAX_WORDS` and watch the limit move in the docs | 1 problem |
 | **Review day** | Redo the weakest async check from memory | Commit; write down which TODOs the tests will check once the database exists | Write 2–3 interview questions with your own answers, from [the question bank](../docs/interview-questions.md) |
 
 ## Stretch goals
